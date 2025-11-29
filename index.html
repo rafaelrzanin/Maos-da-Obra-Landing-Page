@@ -40,6 +40,7 @@
               'float': 'float 6s ease-in-out infinite',
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'bounce-subtle': 'bounceSubtle 2s infinite',
             },
             keyframes: {
               float: {
@@ -49,6 +50,10 @@
               fadeInUp: {
                 '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              bounceSubtle: {
+                '0%, 100%': { transform: 'translateY(-5%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
               }
             }
           }
@@ -88,6 +93,35 @@
         scrollbar-width: none;
       }
       
+      /* Chat Widget Animations */
+      .chat-enter {
+        animation: chatEnter 0.3s ease-out forwards;
+      }
+      .chat-exit {
+        animation: chatExit 0.3s ease-in forwards;
+      }
+      
+      @keyframes chatEnter {
+        from { opacity: 0; transform: translateY(20px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes chatExit {
+        from { opacity: 1; transform: translateY(0) scale(1); }
+        to { opacity: 0; transform: translateY(20px) scale(0.95); }
+      }
+
+      /* Typing indicator dots */
+      .typing-dot {
+        animation: typing 1.4s infinite ease-in-out both;
+      }
+      .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+      .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+      
+      @keyframes typing {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+      }
+      
       /* Custom Scrollbar for page */
       ::-webkit-scrollbar {
         width: 10px;
@@ -106,9 +140,9 @@
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
   }
 }
@@ -189,9 +223,9 @@
                             </span>
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700"></div>
                         </a>
-                        <a href="#solucao" class="bg-white hover:bg-gray-50 text-brand-dark border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:border-gray-300">
+                        <button onclick="openChatWithContext('Ola Zé')" class="bg-white hover:bg-gray-50 text-brand-dark border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:border-gray-300">
                             Conhecer o Zé da Obra
-                        </a>
+                        </button>
                     </div>
 
                     <div class="pt-6 border-t border-gray-200/60 flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 text-gray-500 text-xs md:text-sm font-medium">
@@ -1024,19 +1058,82 @@
         </a>
     </div>
 
+    <!-- CHATBOT ZE DA OBRA (VIRTUAL ASSISTANT) -->
+    <!-- Chat Button -->
+    <button id="chat-toggle-btn" class="fixed bottom-24 md:bottom-8 right-4 md:right-8 z-50 bg-brand-blue hover:bg-blue-600 text-white p-4 rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 group">
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-pulse"></div>
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+        <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden md:block">
+            Tire suas dúvidas com o Zé!
+        </div>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="hidden fixed bottom-24 md:bottom-24 right-4 md:right-8 w-[90vw] md:w-[350px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 overflow-hidden flex flex-col h-[450px] transition-all duration-300 origin-bottom-right">
+        <!-- Header -->
+        <div class="bg-brand-blue p-4 flex justify-between items-center shadow-md z-10">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-blue-300">
+                        <i data-lucide="bot" class="w-6 h-6 text-brand-blue"></i>
+                    </div>
+                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-brand-blue rounded-full"></div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm">Zé da Obra</h4>
+                    <p class="text-xs text-blue-100 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                        Assistente Virtual
+                    </p>
+                </div>
+            </div>
+            <button id="chat-close-btn" class="text-blue-100 hover:text-white p-1 rounded-lg hover:bg-blue-600/50 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 bg-gray-50 p-4 space-y-4 overflow-y-auto scroll-smooth">
+            <!-- Initial Greeting -->
+            <div class="flex justify-start animate-fade-in-up">
+                <div class="bg-white text-gray-700 rounded-2xl rounded-tl-sm p-3 max-w-[90%] text-sm shadow-sm border border-gray-200">
+                    <p class="font-bold text-brand-blue mb-1 text-xs">Zé da Obra:</p>
+                    <p>Olá! 👋 Sou a Inteligência Artificial do Mãos da Obra. Posso te ajudar com dúvidas sobre o app, preços ou como economizar na sua obra.</p>
+                </div>
+            </div>
+             <div class="flex justify-start animate-fade-in-up" style="animation-delay: 0.5s">
+                <div class="bg-white text-gray-700 rounded-2xl rounded-tl-sm p-3 max-w-[90%] text-sm shadow-sm border border-gray-200">
+                    <p>Sobre o que você quer saber?</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <button onclick="sendUserMessage('Qual o preço?')" class="bg-blue-50 hover:bg-blue-100 text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-blue-100">💰 Preços</button>
+                        <button onclick="sendUserMessage('Como funciona?')" class="bg-blue-50 hover:bg-blue-100 text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-blue-100">🛠️ Funcionalidades</button>
+                        <button onclick="sendUserMessage('Tem garantia?')" class="bg-blue-50 hover:bg-blue-100 text-brand-blue text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-blue-100">🛡️ Garantia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <form id="chat-form" class="p-3 bg-white border-t border-gray-100 flex gap-2">
+            <input type="text" id="chat-input" placeholder="Digite sua dúvida..." class="flex-1 bg-gray-100 rounded-full h-10 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/50 transition-all text-gray-700" autocomplete="off">
+            <button type="submit" class="w-10 h-10 bg-brand-blue hover:bg-blue-600 rounded-full flex items-center justify-center text-white shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                <i data-lucide="send" class="w-4 h-4 ml-0.5"></i>
+            </button>
+        </form>
+    </div>
+
     <!-- Scripts -->
     <script>
         // Initialize Icons
         lucide.createIcons();
 
-        // FAQ Toggle Logic
+        // --- FAQ Logic ---
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
             const iconContainer = button.querySelector('.faq-icon');
             const icon = iconContainer.querySelector('i');
             const isHidden = answer.classList.contains('hidden');
 
-            // Close all other FAQs (optional - accordion style)
             document.querySelectorAll('.faq-answer').forEach(el => {
                 if(el !== answer) el.classList.add('hidden');
             });
@@ -1044,28 +1141,24 @@
                if(el !== iconContainer) {
                    el.classList.remove('bg-brand-blue', 'text-white');
                    el.classList.add('bg-gray-100', 'text-gray-400');
-                   // Reset icon rotation if needed
                }
             });
 
-            // Toggle current
             if (isHidden) {
                 answer.classList.remove('hidden');
                 iconContainer.classList.remove('bg-gray-100', 'text-gray-400');
                 iconContainer.classList.add('bg-brand-blue', 'text-white');
-                // Replace icon with chevron-up
                 icon.setAttribute('data-lucide', 'chevron-up');
             } else {
                 answer.classList.add('hidden');
                 iconContainer.classList.remove('bg-brand-blue', 'text-white');
                 iconContainer.classList.add('bg-gray-100', 'text-gray-400');
-                // Replace icon with chevron-down
                 icon.setAttribute('data-lucide', 'chevron-down');
             }
-            lucide.createIcons(); // Re-render icons after change
+            lucide.createIcons();
         }
 
-        // Mobile Menu Logic
+        // --- Mobile Menu Logic ---
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -1084,6 +1177,149 @@
                 lucide.createIcons();
             });
         });
+
+        // --- CHATBOT LOGIC (ZÉ DA OBRA) ---
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatCloseBtn = document.getElementById('chat-close-btn');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        
+        let isChatOpen = false;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.classList.remove('hidden');
+                chatWindow.classList.add('chat-enter');
+                chatWindow.classList.remove('chat-exit');
+                chatToggleBtn.classList.add('hidden');
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } else {
+                chatWindow.classList.add('chat-exit');
+                chatWindow.classList.remove('chat-enter');
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                    chatToggleBtn.classList.remove('hidden');
+                }, 280);
+            }
+        }
+        
+        // Open chat externally (e.g., from Hero button)
+        window.openChatWithContext = function(msg) {
+             if (!isChatOpen) toggleChat();
+             if (msg) sendUserMessage(msg);
+        }
+
+        chatToggleBtn.addEventListener('click', toggleChat);
+        chatCloseBtn.addEventListener('click', toggleChat);
+
+        // Add Message to DOM
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`;
+            
+            let content = '';
+            if (sender === 'user') {
+                content = `
+                    <div class="bg-blue-100 text-gray-800 rounded-2xl rounded-tr-sm p-3 max-w-[85%] text-sm shadow-sm">
+                        <p>${text}</p>
+                    </div>
+                `;
+            } else {
+                content = `
+                    <div class="bg-white text-gray-700 rounded-2xl rounded-tl-sm p-3 max-w-[90%] text-sm shadow-sm border border-gray-200">
+                        <p class="font-bold text-brand-blue mb-1 text-xs">Zé da Obra:</p>
+                        <div class="prose prose-sm">${text}</div>
+                    </div>
+                `;
+            }
+            
+            div.innerHTML = content;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Show Typing Indicator
+        function showTyping() {
+            const div = document.createElement('div');
+            div.id = 'typing-indicator';
+            div.className = 'flex justify-start animate-fade-in-up';
+            div.innerHTML = `
+                <div class="bg-white text-gray-500 rounded-2xl rounded-tl-sm p-3 shadow-sm border border-gray-200 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></span>
+                    <span class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></span>
+                    <span class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></span>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTyping() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        // --- THE "AI" LOGIC (Rule-based) ---
+        function getBotResponse(input) {
+            const lowerInput = input.toLowerCase();
+            
+            // Logic rules
+            if (lowerInput.includes('preço') || lowerInput.includes('quanto custa') || lowerInput.includes('valor') || lowerInput.includes('plano')) {
+                return "Temos planos a partir de <strong>R$ 29,90/mês</strong>. Mas a dica de ouro 💡 é o <strong>Plano Vitalício (R$ 247)</strong>. Você paga uma vez só, nunca mais tem mensalidade e ainda ganha minha consultoria ilimitada!";
+            }
+            if (lowerInput.includes('funciona') || lowerInput.includes('ajuda') || lowerInput.includes('o que faz')) {
+                return "É simples: o app organiza sua obra. Ele gera a lista de compras automática, controla quanto você gastou e te avisa se a obra está atrasada. Eu (a IA) fico disponível pra tirar dúvidas técnicas na hora.";
+            }
+            if (lowerInput.includes('garantia') || lowerInput.includes('teste') || lowerInput.includes('reembolso')) {
+                return "Pode ficar tranquilo! 🛡️ Você tem <strong>30 dias de garantia</strong>. Se não gostar ou achar que não economizou, devolvemos todo o seu dinheiro.";
+            }
+            if (lowerInput.includes('vitalício') || lowerInput.includes('vitalicio')) {
+                return "O Vitalício é o favorito! 🏆 Além de acesso eterno (para essa e futuras obras), você libera o <strong>Chat comigo (IA)</strong> e ganha pacotes de contratos e checklists profissionais.";
+            }
+            if (lowerInput.includes('olá') || lowerInput.includes('oi') || lowerInput.includes('bom dia') || lowerInput.includes('boa tarde')) {
+                return "Opa, tudo bem? Sou o Zé da Obra. Como posso te ajudar a economizar na sua construção hoje?";
+            }
+            if (lowerInput.includes('pagamento') || lowerInput.includes('cartão') || lowerInput.includes('pix')) {
+                return "Aceitamos Cartão de Crédito (em até 12x), PIX e Boleto. Tudo processado de forma segura pela Hotmart.";
+            }
+            
+            // Default Fallback
+            return "Boa pergunta! Para essa dúvida específica, recomendo dar uma olhada no nosso FAQ ou, se quiser começar agora e ver na prática, nosso <a href='#precos' class='text-brand-blue font-bold underline' onclick='toggleChat()'>Plano Vitalício</a> tem garantia total. Quer saber sobre preços ou funcionalidades?";
+        }
+
+        // Handle Send
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // User msg
+            addMessage(text, 'user');
+            chatInput.value = '';
+
+            // Simulated network delay
+            showTyping();
+            
+            // Wait 1-2 seconds
+            await new Promise(r => setTimeout(r, 1200));
+            
+            removeTyping();
+            const response = getBotResponse(text);
+            addMessage(response, 'bot');
+        }
+
+        // Expose function for button clicks inside chat
+        window.sendUserMessage = function(text) {
+            chatInput.value = text;
+            handleChatSubmit({ preventDefault: () => {} });
+        };
+
+        chatForm.addEventListener('submit', handleChatSubmit);
+
     </script>
 </body>
 </html>
