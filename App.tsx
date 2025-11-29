@@ -4,7 +4,6 @@ import {
   ArrowRight, 
   Clock, 
   TrendingUp, 
-  ShieldCheck, 
   LayoutDashboard, 
   Hammer, 
   DollarSign, 
@@ -12,10 +11,31 @@ import {
   X,
   Star,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  ShieldCheck,
+  AlertOctagon,
+  Smartphone,
+  FileText,
+  BellRing,
+  Calculator,
+  HardHat,
+  CalendarCheck,
+  AlertTriangle,
+  Zap,
+  Bot,
+  Sparkles,
+  MessageCircle,
+  Users
 } from 'lucide-react';
 import { PRICING_PLANS, TESTIMONIALS, FAQS } from './constants';
-import { DashboardMockup, MaterialsListMockup } from './components/AppMockup';
+import { 
+  DashboardMockup, 
+  ComparisonCard, 
+  ZeDaObraChat, 
+  MiniFinancialCard, 
+  MiniMaterialList, 
+  MiniTeamCard 
+} from './components/AppMockup';
 
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,267 +54,432 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-brand-gray font-sans text-brand-dark overflow-x-hidden">
+    <div className="min-h-screen bg-[#FAFAFA] font-sans text-brand-dark overflow-x-hidden selection:bg-brand-blue selection:text-white pb-20 md:pb-0">
       
-      {/* --- HEADER --- */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      {/* --- HEADER (Glassmorphism) --- */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100 transition-all duration-300">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="bg-brand-blue p-2 rounded-lg">
+            <div className="bg-brand-blue p-2 rounded-xl shadow-lg shadow-brand-blue/20">
               <Hammer className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-xl tracking-tight text-brand-dark">MÃOS DA OBRA</span>
+            <span className="font-display font-bold text-xl tracking-tight text-brand-dark">MÃOS DA OBRA</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-            <button onClick={() => scrollToSection('problema')} className="hover:text-brand-blue transition">O Problema</button>
-            <button onClick={() => scrollToSection('solucao')} className="hover:text-brand-blue transition">Funcionalidades</button>
-            <button onClick={() => scrollToSection('depoimentos')} className="hover:text-brand-blue transition">Depoimentos</button>
+            <button onClick={() => scrollToSection('problema')} className="hover:text-brand-blue transition">Problemas comuns</button>
+            <button onClick={() => scrollToSection('solucao')} className="hover:text-brand-blue transition">O que o app faz</button>
+            <button onClick={() => scrollToSection('depoimentos')} className="hover:text-brand-blue transition">Resultados</button>
             <button 
               onClick={() => scrollToSection('precos')} 
-              className="bg-brand-dark text-white px-5 py-2.5 rounded-full hover:bg-brand-blue transition-colors shadow-lg shadow-brand-blue/20"
+              className="bg-brand-dark text-white px-6 py-2.5 rounded-full hover:bg-brand-blue transition-all shadow-lg shadow-brand-dark/10 hover:shadow-brand-blue/20 transform hover:-translate-y-0.5 font-bold"
             >
-              Começar Agora
+              Ver Planos
             </button>
           </nav>
 
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden p-2 text-gray-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 p-4 shadow-xl absolute w-full">
+          <div className="md:hidden bg-white border-t border-gray-100 p-4 shadow-xl absolute w-full animate-fade-in-up">
             <div className="flex flex-col gap-4">
-              <button onClick={() => scrollToSection('problema')} className="text-left font-medium p-2 text-gray-700">O Problema</button>
-              <button onClick={() => scrollToSection('solucao')} className="text-left font-medium p-2 text-gray-700">Funcionalidades</button>
-              <button onClick={() => scrollToSection('precos')} className="bg-brand-blue text-white p-3 rounded-lg font-bold text-center">Ver Planos</button>
+              <button onClick={() => scrollToSection('problema')} className="text-left font-medium p-3 rounded-lg hover:bg-gray-50 text-gray-700">Por que usar?</button>
+              <button onClick={() => scrollToSection('solucao')} className="text-left font-medium p-3 rounded-lg hover:bg-gray-50 text-gray-700">Funcionalidades</button>
+              <button onClick={() => { scrollToSection('precos'); setIsMenuOpen(false); }} className="bg-brand-blue text-white p-4 rounded-xl font-bold text-center shadow-md">QUERO ECONOMIZAR AGORA</button>
             </div>
           </div>
         )}
       </header>
 
       {/* --- HERO SECTION --- */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent -z-10 rounded-l-[100px] opacity-60"></div>
+      <section className="pt-28 pb-12 md:pt-48 md:pb-32 overflow-hidden relative">
+        {/* Background Gradients */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b from-blue-50 to-transparent rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-t from-green-50 to-transparent rounded-full blur-3xl opacity-40 translate-y-1/3 -translate-x-1/3"></div>
         
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            <div className="lg:w-1/2 space-y-8">
-              <div className="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-4 py-1.5 rounded-full text-sm font-semibold border border-brand-blue/20">
-                <Star className="w-4 h-4 fill-brand-blue" />
-                Economia comprovada de até 30%
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            
+            {/* Hero Copy */}
+            <div className="lg:w-1/2 space-y-6 md:space-y-8 text-center lg:text-left animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 bg-white border border-gray-200 shadow-sm px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold text-gray-700 animate-float">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                </span>
+                Agora com Inteligência Artificial
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-brand-dark">
-                Controle sua obra. <br />
-                <span className="text-brand-blue">Economize dinheiro.</span> <br />
-                Ganhe tempo.
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-brand-dark">
+                Controle sua obra.<br />
+                <span className="text-gradient">Economize dinheiro. Ganhe tempo.</span>
               </h1>
               
-              <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
-                O MÃOS DA OBRA reduz desperdícios, evita atrasos e te dá controle total da execução e dos materiais. Pare de jogar dinheiro fora na construção.
+              <p className="text-base md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                Tenha o <strong>Zé da Obra (IA)</strong> como seu engenheiro virtual 24h. Ele tira dúvidas, fiscaliza orçamentos e impede que você gaste mais do que deveria.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button 
                   onClick={() => scrollToSection('precos')}
-                  className="bg-brand-blue hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  className="relative overflow-hidden bg-brand-blue hover:bg-blue-600 text-white px-8 md:px-10 py-4 rounded-xl font-bold text-lg shadow-[0_10px_40px_-10px_rgba(0,87,255,0.5)] transition-all transform hover:-translate-y-1 hover:scale-105 flex items-center justify-center gap-2 group border-b-4 border-blue-800 active:border-b-0 active:translate-y-1"
                 >
-                  QUERO ECONOMIZAR
-                  <ArrowRight className="w-5 h-5" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    QUERO ECONOMIZAR
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-700"></div>
                 </button>
-                <div className="flex items-center gap-4 px-4 py-2">
-                  <div className="flex -space-x-3">
-                    {[1,2,3].map(i => (
-                       <img key={i} src={`https://picsum.photos/40/40?random=${i}`} alt="user" className="w-10 h-10 rounded-full border-2 border-white" />
-                    ))}
-                  </div>
-                  <div className="text-sm font-medium">
-                    <span className="block font-bold text-brand-dark">+2.000 obras</span>
-                    <span className="text-gray-500">gerenciadas esse mês</span>
-                  </div>
-                </div>
+                <button 
+                  onClick={() => scrollToSection('solucao')}
+                  className="bg-white hover:bg-gray-50 text-brand-dark border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 hover:shadow-lg hover:border-gray-300"
+                >
+                  Conhecer o Zé da Obra
+                </button>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                {[
-                  { icon: CheckCircle2, text: 'Zero desperdício' },
-                  { icon: Clock, text: 'Cronograma Visual' },
-                  { icon: TrendingUp, text: 'Controle Financeiro' },
-                  { icon: LayoutDashboard, text: 'Relatórios PDF' }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-gray-700 font-medium">
-                    <item.icon className="w-5 h-5 text-brand-green" />
-                    {item.text}
-                  </div>
-                ))}
+              <div className="pt-6 border-t border-gray-200/60 flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 text-gray-500 text-xs md:text-sm font-medium">
+                 <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 md:w-5 h-4 md:h-5 text-brand-green" />
+                    <span>Plano vitalício disponível</span>
+                 </div>
+                 <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 md:w-5 h-4 md:h-5 text-brand-green" />
+                    <span>Garantia de 30 dias</span>
+                 </div>
               </div>
             </div>
 
-            <div className="lg:w-1/2 relative">
-               <div className="absolute -top-10 -left-10 w-72 h-72 bg-brand-green/20 rounded-full filter blur-3xl"></div>
-               <div className="absolute top-20 -right-10 w-72 h-72 bg-brand-blue/20 rounded-full filter blur-3xl"></div>
-               <div className="relative z-10 transform lg:rotate-[-2deg] transition-transform hover:rotate-0 duration-500">
+            {/* Hero Visual */}
+            <div className="lg:w-1/2 relative lg:h-[600px] flex items-center justify-center perspective-1000 mt-8 lg:mt-0">
+               <div className="relative z-20 transform transition-transform duration-700 hover:rotate-0 lg:rotate-y-[-10deg] lg:rotate-x-[5deg]">
                  <DashboardMockup />
-                 <div className="absolute -bottom-10 -left-10 hidden md:block transform rotate-6">
-                    <MaterialsListMockup />
-                 </div>
                </div>
+               
+               {/* Floating Element - Comparison */}
+               <div className="absolute top-[20%] -left-10 z-30 hidden md:block animate-float" style={{ animationDelay: '1s' }}>
+                   <ComparisonCard />
+               </div>
+
+               {/* Background Blobs */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-100/50 via-transparent to-transparent -z-10"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- PROBLEM SECTION --- */}
-      <section id="problema" className="py-20 bg-brand-dark text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+      {/* --- AGITATION SECTION (Dark Mode) --- */}
+      <section id="problema" className="py-16 md:py-24 bg-[#0B132B] text-white relative overflow-hidden">
+        {/* Pattern Overlay */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+        
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">A falta de controle é o que mais destrói obras no Brasil.</h2>
-            <p className="text-xl text-gray-300">Construir sem gestão profissional é pedir para perder dinheiro.</p>
+          <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+            <div className="inline-block bg-red-500/20 text-red-300 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-red-500/30">
+              A triste realidade
+            </div>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 leading-tight">
+              A falta de controle é o que mais <br /><span className="text-red-400">destrói obras no Brasil.</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-400">
+              Sem organização, sua reforma dos sonhos vira um pesadelo financeiro.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
-              { title: 'Orçamento Estourado', stat: '70%', desc: 'das obras custam mais do que o previsto inicial.' },
-              { title: 'Desperdício de Material', stat: '20%', desc: 'do material comprado vai para o lixo ou entulho.' },
-              { title: 'Atrasos Crônicos', stat: '90 dias', desc: 'é a média de atraso em reformas residenciais.' },
-              { title: 'Equipe Desorganizada', stat: 'Prejuízo', desc: 'Retrabalho gera custo duplo de mão de obra.' }
+              { 
+                icon: DollarSign, 
+                title: 'Orçamento Estourado', 
+                stat: '70%', 
+                desc: 'das obras gastam muito mais do que o planejado por falta de controle.',
+                color: 'text-red-400'
+              },
+              { 
+                icon: AlertOctagon, 
+                title: 'Desperdício Puro', 
+                stat: '20%', 
+                desc: 'do material vira entulho. É como rasgar 1 nota de R$100 a cada 5.',
+                color: 'text-orange-400'
+              },
+              { 
+                icon: Clock, 
+                title: 'Atrasos Infinitos', 
+                stat: '+90 dias', 
+                desc: 'é a média de atraso. Isso significa meses a mais pagando mão de obra.',
+                color: 'text-yellow-400'
+              },
+              { 
+                icon: ShieldCheck, 
+                title: 'Dor de Cabeça', 
+                stat: 'Estresse', 
+                desc: 'Discutir com pedreiro, material errado e compras de emergência.',
+                color: 'text-gray-300'
+              }
             ].map((item, i) => (
-              <div key={i} className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
-                <div className="text-4xl font-bold text-brand-green mb-2">{item.stat}</div>
+              <div key={i} className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl backdrop-blur-sm hover:bg-white/10 transition-colors group">
+                <div className={`p-3 rounded-xl bg-white/5 w-fit mb-6 group-hover:scale-110 transition-transform`}>
+                    <item.icon className={`w-8 h-8 ${item.color}`} />
+                </div>
+                <div className={`text-4xl font-display font-bold ${item.color} mb-2`}>{item.stat}</div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
           
-          <div className="mt-16 text-center">
-             <button onClick={() => scrollToSection('precos')} className="group text-white font-bold text-lg inline-flex items-center gap-2 border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors">
-                Quero parar os prejuízos agora
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+          <div className="mt-12 md:mt-16 flex flex-col md:flex-row justify-center items-center gap-4">
+             <button onClick={() => scrollToSection('solucao')} className="w-full md:w-auto bg-white text-brand-dark font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
+                QUERO EVITAR ESSES PROBLEMAS
+                <ArrowRight className="w-5 h-5" />
              </button>
           </div>
         </div>
       </section>
 
-      {/* --- SOLUTION SECTION --- */}
-      <section id="solucao" className="py-24 bg-white">
+      {/* --- SOLUTION SECTION (Bento Grid) --- */}
+      <section id="solucao" className="py-16 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-brand-blue font-bold tracking-wider text-sm uppercase">A Solução Definitiva</span>
-            <h2 className="text-4xl font-bold mt-3 mb-6 text-brand-dark">A obra que se controla sozinha.<br/>Você só acompanha.</h2>
-            <p className="text-gray-600">Centralize tudo em um único lugar. Do primeiro tijolo ao acabamento final.</p>
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            <span className="text-brand-blue font-bold tracking-wider text-sm uppercase">A Solução Inteligente</span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mt-3 mb-6 text-brand-dark">
+              A obra que se controla sozinha. <br/> Com ajuda da IA.
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Reunimos todas as ferramentas de um engenheiro profissional em um aplicativo simples que tem uma Inteligência Artificial para te guiar.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-12">
-            {[
-              {
-                icon: Hammer,
-                title: 'Controle da Execução',
-                desc: 'Etapas organizadas, tarefas diárias, checklist de qualidade e acompanhamento do progresso físico.',
-                color: 'bg-blue-100 text-blue-600'
-              },
-              {
-                icon: CheckCircle2,
-                title: 'Controle de Materiais',
-                desc: 'Listas automáticas, cálculo exato de quantitativos e alertas de estoque para evitar paradas.',
-                color: 'bg-green-100 text-green-600'
-              },
-              {
-                icon: DollarSign,
-                title: 'Controle de Gastos',
-                desc: 'Resumo do orçamento em tempo real, fluxo de caixa e comparativo Previsto x Realizado.',
-                color: 'bg-purple-100 text-purple-600'
-              }
-            ].map((feature, i) => (
-              <div key={i} className="flex flex-col items-center text-center group">
-                <div className={`w-20 h-20 ${feature.color} rounded-3xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <feature.icon className="w-10 h-10" />
+          {/* Bento Grid Layout - RESTRUCTURED */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(200px,auto)] max-w-6xl mx-auto">
+            
+            {/* Feature 1 - ZÉ DA OBRA (HERO) */}
+            <div className="md:col-span-2 md:row-span-2 bg-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group flex flex-col md:flex-row gap-8">
+               
+               <div className="relative z-20 flex-1 flex flex-col justify-center">
+                 <div className="flex gap-2 mb-6 flex-wrap">
+                   <div className="inline-flex items-center gap-2 bg-blue-50 text-brand-blue px-3 py-1 rounded-full text-xs font-bold self-start">
+                      <Sparkles className="w-3 h-3" /> NOVA IA
+                   </div>
+                   <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold self-start border border-orange-200 animate-pulse-slow">
+                      <Star className="w-3 h-3 fill-orange-700" /> EXCLUSIVO VITALÍCIO
+                   </div>
+                 </div>
+
+                 <div className="flex items-center gap-4 mb-4">
+                    <div className="w-14 h-14 bg-brand-blue rounded-2xl flex items-center justify-center text-white shadow-lg shadow-brand-blue/30 flex-shrink-0">
+                        <Bot className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-brand-dark leading-tight">Zé da Obra:<br/> Sua IA Especialista</h3>
+                 </div>
+                 
+                 <p className="text-gray-600 text-base md:text-lg mb-6 leading-relaxed">
+                    Não entende de obra? O Zé entende. Ele é seu assistente virtual disponível 24h para tirar dúvidas técnicas e evitar que te passem a perna.
+                 </p>
+                 <ul className="space-y-3">
+                    <li className="flex items-center gap-3 text-gray-700 font-medium text-sm md:text-base">
+                        <div className="bg-green-100 p-1 rounded-full"><CheckCircle2 className="w-4 h-4 text-green-600" /></div>
+                        <span>"Zé, essa quantidade de cimento tá certa?"</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-gray-700 font-medium text-sm md:text-base">
+                        <div className="bg-green-100 p-1 rounded-full"><CheckCircle2 className="w-4 h-4 text-green-600" /></div>
+                        <span>"Zé, qual a melhor tinta para área externa?"</span>
+                    </li>
+                 </ul>
+               </div>
+               
+               {/* Visual Element: AI CHAT Mockup */}
+               <div className="flex-1 relative z-10 flex items-center justify-center">
+                   <div className="transform transition-transform duration-500 md:group-hover:scale-105 w-full">
+                       <ZeDaObraChat />
+                   </div>
+               </div>
+               
+               {/* Decorative Background */}
+               <div className="absolute right-0 top-0 w-2/3 h-full bg-gradient-to-l from-blue-50 to-transparent rounded-r-[2rem] pointer-events-none -z-0"></div>
+            </div>
+
+            {/* Feature 2 - FINANCIAL CONTROL */}
+            <div className="bg-brand-dark rounded-[2rem] p-6 border border-gray-800 shadow-xl text-white relative overflow-hidden flex flex-col justify-between group min-h-[250px]">
+               <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                     <div className="p-2 bg-white/10 rounded-lg"><DollarSign className="w-4 h-4 text-brand-green"/></div>
+                     <h3 className="text-lg font-bold">Controle Financeiro</h3>
+                  </div>
+                  <p className="text-gray-400 text-xs mb-4">
+                     Orçado x Realizado em tempo real.
+                  </p>
+                  <MiniFinancialCard />
+               </div>
+            </div>
+
+            {/* Feature 3 - MATERIAL LIST */}
+            <div className="bg-white rounded-[2rem] p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col min-h-[250px] relative overflow-hidden">
+               <div className="mb-4 relative z-10">
+                   <div className="flex items-center gap-2 mb-2">
+                      <div className="p-2 bg-orange-50 rounded-lg"><Smartphone className="w-4 h-4 text-orange-500"/></div>
+                      <h3 className="text-lg font-bold text-brand-dark">Lista de Compras</h3>
+                   </div>
+                   <p className="text-gray-600 text-xs mb-4">
+                      O app gera a lista e você só manda pro fornecedor.
+                   </p>
+                   <MiniMaterialList />
+               </div>
+            </div>
+
+            {/* Feature 4 - TEAM MANAGEMENT */}
+            <div className="bg-white rounded-[2rem] p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow min-h-[250px] flex flex-col">
+               <div className="flex items-center gap-2 mb-2">
+                  <div className="p-2 bg-blue-50 rounded-lg"><Users className="w-4 h-4 text-brand-blue"/></div>
+                  <h3 className="text-lg font-bold text-brand-dark">Gestão de Equipe</h3>
+               </div>
+               <p className="text-gray-600 text-xs mb-4">
+                  Controle diárias, presenças e pagamentos.
+               </p>
+               <MiniTeamCard />
+            </div>
+
+            {/* Feature 5 - TIMELINE */}
+            <div className="md:col-span-2 bg-gradient-to-br from-gray-100 to-white rounded-[2rem] p-6 md:p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col md:flex-row items-center gap-6 relative overflow-hidden">
+               <div className="flex-1 relative z-10 w-full">
+                   <div className="flex items-center gap-3 mb-4">
+                       <div className="w-10 h-10 bg-brand-dark rounded-xl flex items-center justify-center text-white">
+                          <CalendarCheck className="w-5 h-5" />
+                       </div>
+                       <h3 className="text-xl font-bold text-brand-dark">Cronograma Visual</h3>
+                   </div>
+                   <p className="text-gray-600 text-sm mb-4">
+                      Acompanhe a barra de progresso de cada etapa (Fundação, Alvenaria, Acabamento). Veja o que está atrasado e o que deve começar na próxima semana.
+                   </p>
+                   <button onClick={() => scrollToSection('precos')} className="text-brand-dark font-bold text-sm border-b border-brand-dark pb-0.5 hover:text-brand-blue hover:border-brand-blue transition-colors">
+                      Começar meu cronograma
+                   </button>
+               </div>
+               <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 p-4 w-full max-w-xs mx-auto md:mx-0">
+                   <div className="space-y-3">
+                       <div className="flex justify-between text-xs font-bold text-gray-700"><span>Fundação</span> <span>100%</span></div>
+                       <div className="w-full bg-gray-100 h-1.5 rounded-full"><div className="w-full h-full bg-brand-green rounded-full"></div></div>
+                       
+                       <div className="flex justify-between text-xs font-bold text-gray-700"><span>Alvenaria</span> <span>60%</span></div>
+                       <div className="w-full bg-gray-100 h-1.5 rounded-full"><div className="w-[60%] h-full bg-brand-blue rounded-full"></div></div>
+
+                       <div className="flex justify-between text-xs font-bold text-gray-400"><span>Acabamento</span> <span>0%</span></div>
+                       <div className="w-full bg-gray-100 h-1.5 rounded-full"></div>
+                   </div>
+               </div>
+            </div>
+
+          </div>
+
+          <div className="mt-12 md:mt-16 text-center">
+             <button 
+                onClick={() => scrollToSection('precos')} 
+                className="w-full md:w-auto bg-brand-blue text-white font-bold text-lg px-10 py-4 rounded-full shadow-xl shadow-brand-blue/20 hover:-translate-y-1 transition-transform flex items-center justify-center gap-2 mx-auto hover:bg-blue-600 border-b-4 border-blue-800 active:border-b-0 active:translate-y-1"
+             >
+                QUERO TER CONTROLE TOTAL
+                <ArrowRight className="w-5 h-5" />
+             </button>
+             <p className="text-gray-500 text-sm mt-3">Teste por 30 dias sem compromisso.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SOCIAL PROOF --- */}
+      <section id="depoimentos" className="py-16 md:py-24 bg-white border-y border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-6">
+             <div className="max-w-xl">
+               <h2 className="text-3xl md:text-4xl font-display font-bold text-brand-dark mb-4">
+                 Eles economizaram milhares de reais. <br/> <span className="text-brand-blue">Você é o próximo.</span>
+               </h2>
+               <p className="text-gray-500">
+                 Histórias reais de quem construiu sua casa própria ou reformou usando o app.
+               </p>
+             </div>
+             <div className="flex -space-x-4">
+                {[1,2,3,4].map(i => (
+                  <img key={i} src={`https://picsum.photos/60/60?random=${i+10}`} className="w-12 h-12 rounded-full border-4 border-white shadow-md" alt="User" />
+                ))}
+                <div className="w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-xs border-4 border-white shadow-md">+2k</div>
+             </div>
+          </div>
+          
+          {/* Scroll Horizontal no Mobile */}
+          <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 pb-8 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory hide-scrollbar">
+            {TESTIMONIALS.map((t) => (
+              <div key={t.id} className="min-w-[85vw] md:min-w-0 snap-center bg-gray-50 p-6 md:p-8 rounded-3xl hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <img src={t.avatar} alt={t.name} className="w-14 h-14 rounded-full object-cover shadow-sm" />
+                    <div>
+                      <h4 className="font-bold text-brand-dark">{t.name}</h4>
+                      <span className="text-xs font-bold text-brand-blue uppercase tracking-wider bg-blue-50 px-2 py-1 rounded-md">{t.role}</span>
+                    </div>
+                  </div>
+                  <div className="mb-6 relative">
+                    <span className="absolute -top-4 -left-2 text-6xl text-gray-200 font-serif leading-none">"</span>
+                    <p className="text-gray-600 italic relative z-10">{t.quote}</p>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-brand-dark">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
+                <div className="flex items-center gap-2 text-brand-green font-bold text-sm border-t border-gray-200 pt-4">
+                  <TrendingUp className="w-4 h-4" />
+                  {t.savings}
+                </div>
               </div>
             ))}
-          </div>
-
-          {/* Feature Showcase */}
-          <div className="mt-24 bg-brand-gray rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
-             <div className="flex flex-col lg:flex-row items-center gap-12">
-                <div className="lg:w-1/2 space-y-8 z-10">
-                   <h3 className="text-3xl font-bold">Veja sua obra ficando profissional</h3>
-                   <ul className="space-y-6">
-                      {[
-                        'Dashboard financeiro completo na palma da mão',
-                        'Notificações de tarefas atrasadas',
-                        'Exportação de relatórios para PDF',
-                        'Acesso compartilhado com engenheiro e mestre de obras'
-                      ].map((feat, i) => (
-                        <li key={i} className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-                           <div className="bg-brand-green/20 p-2 rounded-full">
-                              <CheckCircle2 className="w-5 h-5 text-brand-green" />
-                           </div>
-                           <span className="font-medium text-gray-800">{feat}</span>
-                        </li>
-                      ))}
-                   </ul>
-                </div>
-                <div className="lg:w-1/2 relative z-10">
-                   <DashboardMockup />
-                </div>
-                
-                {/* Decorative BG elements */}
-                <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-transparent to-brand-blue/5 pointer-events-none"></div>
-             </div>
           </div>
         </div>
       </section>
 
       {/* --- PRICING SECTION --- */}
-      <section id="precos" className="py-24 bg-brand-dark relative">
-        <div className="absolute inset-0 overflow-hidden">
-           <div className="absolute -top-[20%] left-[20%] w-[500px] h-[500px] bg-brand-blue/20 rounded-full blur-[100px]"></div>
-           <div className="absolute top-[40%] right-[10%] w-[400px] h-[400px] bg-brand-green/10 rounded-full blur-[100px]"></div>
+      <section id="precos" className="py-16 md:py-24 bg-brand-dark relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+           <div className="absolute -top-[20%] left-[20%] w-[600px] h-[600px] bg-brand-blue/20 rounded-full blur-[120px]"></div>
+           <div className="absolute top-[40%] right-[10%] w-[500px] h-[500px] bg-brand-green/10 rounded-full blur-[120px]"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">Escolha o plano ideal</h2>
-            <p className="text-xl text-gray-400">Investimento menor que um saco de cimento para salvar sua obra.</p>
+          <div className="text-center mb-12 md:mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-white">
+              Custa menos que <span className="text-brand-green underline decoration-wavy decoration-brand-green/30">um saco de cimento</span>.
+            </h2>
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Escolha o plano que cabe no seu bolso e comece a economizar hoje mesmo.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-end">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-center">
             {PRICING_PLANS.map((plan) => (
               <div 
                 key={plan.id} 
-                className={`relative bg-white rounded-3xl p-8 transition-all duration-300 ${
+                className={`relative rounded-3xl p-6 md:p-8 transition-all duration-300 flex flex-col h-full ${
                   plan.highlight 
-                    ? 'border-4 border-brand-green shadow-[0_0_50px_rgba(30,194,139,0.3)] transform md:-translate-y-6 z-10' 
-                    : 'border border-gray-200 opacity-95 hover:opacity-100'
+                    ? 'bg-gradient-to-b from-white to-gray-50 border-4 border-brand-green shadow-[0_0_60px_rgba(30,194,139,0.25)] scale-100 md:scale-105 z-20 order-first md:order-none mb-8 md:mb-0' 
+                    : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'
                 }`}
               >
                 {plan.ribbon && (
-                  <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${plan.highlight ? 'bg-brand-green text-brand-dark' : 'bg-brand-blue text-white'} px-6 py-1.5 rounded-full text-sm font-bold uppercase tracking-wide shadow-lg`}>
+                  <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${plan.highlight ? 'bg-brand-green text-brand-dark animate-pulse-slow' : 'bg-brand-blue text-white'} px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap`}>
                     {plan.ribbon}
                   </div>
                 )}
 
                 <div className="text-center mb-8 pt-4">
-                  <h3 className={`text-xl font-bold mb-2 ${plan.highlight ? 'text-brand-dark' : 'text-gray-500'}`}>{plan.name}</h3>
+                  <h3 className={`text-xl font-bold mb-2 ${plan.highlight ? 'text-brand-dark' : 'text-gray-300'}`}>{plan.name}</h3>
                   <div className="flex items-center justify-center gap-1 mb-2">
-                    <span className="text-4xl font-extrabold text-brand-dark">{plan.price}</span>
+                    <span className={`text-4xl font-display font-bold ${plan.highlight ? 'text-brand-dark' : 'text-white'}`}>{plan.price}</span>
                   </div>
-                    <span className="text-sm font-medium text-gray-400 uppercase tracking-wide">{plan.period}</span>
-                  {plan.savings && <p className="text-brand-green font-bold text-sm mt-2">{plan.savings}</p>}
+                    <span className={`text-xs font-bold uppercase tracking-wide ${plan.highlight ? 'text-gray-500' : 'text-gray-500'}`}>{plan.period}</span>
+                  {plan.savings && <p className="text-brand-green font-bold text-sm mt-3 bg-brand-green/10 inline-block px-3 py-1 rounded-lg">{plan.savings}</p>}
                 </div>
 
-                <p className="text-center text-gray-600 text-sm mb-8 px-4">{plan.description}</p>
-
-                <div className="space-y-4 mb-8">
+                <div className="space-y-4 mb-8 flex-grow">
                   {plan.features.map((feature, idx) => (
-                    <div key={idx} className={`flex items-start gap-3 text-sm ${feature.included ? 'text-gray-700' : 'text-gray-300'}`}>
+                    <div key={idx} className={`flex items-start gap-3 text-sm ${feature.included ? (plan.highlight ? 'text-gray-700' : 'text-gray-200') : 'text-gray-500 opacity-50'}`}>
                       {feature.included ? (
                         <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${plan.highlight ? 'text-brand-green' : 'text-brand-blue'}`} />
                       ) : (
@@ -307,15 +492,19 @@ const App: React.FC = () => {
 
                 {/* Bonuses for Vitalício */}
                 {plan.bonuses && (
-                  <div className="bg-brand-gray/50 rounded-xl p-4 mb-8 border border-brand-green/20">
-                    <p className="text-xs font-bold text-brand-dark uppercase tracking-wider mb-3 text-center">🎁 3 Bônus Inclusos (Grátis)</p>
+                  <div className="bg-orange-50 rounded-xl p-5 mb-8 border border-orange-100 relative overflow-hidden">
+                    <div className="absolute -right-4 -top-4 w-16 h-16 bg-orange-200 rounded-full opacity-20"></div>
+                    <p className="text-xs font-extrabold text-orange-600 uppercase tracking-wider mb-4 text-center flex items-center justify-center gap-2">
+                       <Star className="w-3 h-3 fill-orange-600" />
+                       3 Bônus Exclusivos (Grátis)
+                    </p>
                     <div className="space-y-3">
                       {plan.bonuses.map((bonus, bIdx) => (
-                        <div key={bIdx} className="flex gap-2">
-                           <div className="mt-0.5 w-1.5 h-1.5 rounded-full bg-brand-green flex-shrink-0"></div>
+                        <div key={bIdx} className="flex gap-3">
+                           <div className="mt-1 w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></div>
                            <div>
-                             <p className="text-xs font-bold text-gray-800">{bonus.title}</p>
-                             <p className="text-[10px] text-gray-500 leading-tight">{bonus.description}</p>
+                             <p className="text-sm font-bold text-gray-900">{bonus.title}</p>
+                             <p className="text-[11px] text-gray-600 leading-tight">{bonus.description}</p>
                            </div>
                         </div>
                       ))}
@@ -323,60 +512,46 @@ const App: React.FC = () => {
                   </div>
                 )}
 
-                <button className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl ${
+                <button className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:translate-y-0 active:shadow-md border-b-4 ${
                   plan.highlight 
-                    ? 'bg-brand-green text-brand-dark hover:bg-emerald-400' 
-                    : 'bg-brand-dark text-white hover:bg-gray-800'
+                    ? 'bg-gradient-to-b from-brand-green to-green-600 text-white hover:brightness-110 border-green-800 shadow-green-500/30' 
+                    : 'bg-white text-brand-dark hover:bg-gray-100 border-gray-300'
                 }`}>
                   {plan.ctaText}
                 </button>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* --- TESTIMONIALS --- */}
-      <section id="depoimentos" className="py-24 bg-brand-gray">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-brand-dark">Quem usa, economiza.</h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t) => (
-              <div key={t.id} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="flex items-center gap-4 mb-6">
-                  <img src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
-                  <div>
-                    <h4 className="font-bold text-brand-dark">{t.name}</h4>
-                    <span className="text-sm text-gray-500">{t.role}</span>
-                  </div>
-                </div>
-                <p className="text-gray-600 italic mb-6">"{t.quote}"</p>
-                <div className="inline-block bg-green-50 text-brand-green px-3 py-1 rounded-full text-sm font-bold">
-                  💰 {t.savings}
-                </div>
-              </div>
-            ))}
+          <div className="text-center mt-12">
+            <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
+              <ShieldCheck className="w-4 h-4" />
+              Pagamento seguro e processado via Hotmart/Stripe.
+            </p>
           </div>
         </div>
       </section>
 
       {/* --- FAQ --- */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h2 className="text-3xl font-bold text-center mb-12 text-brand-dark">Perguntas Frequentes</h2>
+          <h2 className="text-3xl font-display font-bold text-center mb-4 text-brand-dark">Ficou com dúvida?</h2>
+          <p className="text-center text-gray-500 mb-12">Respondemos as perguntas mais comuns de quem não é da área.</p>
+          
           <div className="space-y-4">
             {FAQS.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">
+              <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-brand-blue/30">
                 <button 
                   onClick={() => toggleFaq(index)}
                   className="w-full flex items-center justify-between p-6 bg-white hover:bg-gray-50 transition-colors text-left"
                 >
-                  <span className="font-semibold text-lg text-gray-800">{faq.question}</span>
-                  {openFaqIndex === index ? <ChevronUp className="text-brand-blue" /> : <ChevronDown className="text-gray-400" />}
+                  <span className="font-semibold text-base md:text-lg text-gray-800 pr-4">{faq.question}</span>
+                  <div className={`p-2 rounded-full transition-colors flex-shrink-0 ${openFaqIndex === index ? 'bg-brand-blue text-white' : 'bg-gray-100 text-gray-400'}`}>
+                    {openFaqIndex === index ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </div>
                 </button>
                 {openFaqIndex === index && (
-                  <div className="p-6 pt-0 bg-gray-50 text-gray-600 leading-relaxed border-t border-gray-100">
+                  <div className="p-6 pt-0 bg-white text-gray-600 leading-relaxed border-t border-transparent animate-fade-in-up">
                     {faq.answer}
                   </div>
                 )}
@@ -387,40 +562,98 @@ const App: React.FC = () => {
       </section>
 
       {/* --- FINAL CTA --- */}
-      <section className="py-24 bg-brand-blue text-white text-center">
-        <div className="container mx-auto px-4">
+      <section className="py-20 md:py-24 relative overflow-hidden mb-16 md:mb-0">
+        <div className="absolute inset-0 bg-brand-blue">
+           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+           <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-brand-blue to-brand-blueDark"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 text-center text-white">
            <div className="max-w-4xl mx-auto">
-             <h2 className="text-4xl md:text-5xl font-bold mb-6">Sua obra não pode esperar.</h2>
-             <p className="text-xl md:text-2xl opacity-90 mb-10">Cada dia sem controle gera prejuízo. Economize tempo, dinheiro e dores de cabeça agora.</p>
+             <div className="inline-block bg-white/10 backdrop-blur-md px-6 py-2 rounded-full mb-8 border border-white/20">
+                <span className="font-bold tracking-wider text-sm flex items-center gap-2"><Zap className="w-4 h-4 text-yellow-300 fill-yellow-300"/> OFERTA POR TEMPO LIMITADO</span>
+             </div>
              
-             <button 
-               onClick={() => scrollToSection('precos')}
-               className="bg-white text-brand-blue text-xl font-extrabold px-12 py-6 rounded-2xl shadow-2xl hover:bg-gray-100 transition-all transform hover:scale-105"
-             >
-               COMEÇAR AGORA — GARANTIR MEU ACESSO
-             </button>
-             <p className="mt-6 text-sm opacity-70">Garantia incondicional de 7 dias. Não gostou? Devolvemos seu dinheiro.</p>
+             <h2 className="text-3xl md:text-6xl font-display font-bold mb-8">
+               Sua obra não pode esperar.<br/>O prejuízo aumenta a cada dia.
+             </h2>
+             <p className="text-lg md:text-xl opacity-90 mb-12 max-w-2xl mx-auto font-light">
+               Garanta o controle total, economize milhares de reais e durma tranquilo sabendo que sua obra está no caminho certo.
+             </p>
+             
+             <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+               {/* 3D PREMIUM BUTTON */}
+               <button 
+                 onClick={() => scrollToSection('precos')}
+                 className="
+                   relative group w-full md:w-auto
+                   bg-gradient-to-b from-[#22c55e] to-[#16a34a] 
+                   text-white text-xl font-extrabold uppercase tracking-wide
+                   px-12 py-6 rounded-2xl 
+                   shadow-[0_10px_0_0_#14532d,0_20px_20px_rgba(0,0,0,0.3)]
+                   hover:shadow-[0_10px_0_0_#14532d,0_25px_25px_rgba(0,0,0,0.35)]
+                   hover:brightness-110 hover:-translate-y-[2px]
+                   active:shadow-[0_0px_0_0_#14532d,0_0px_0px_rgba(0,0,0,0.3)]
+                   active:translate-y-[10px] active:border-b-0
+                   transition-all duration-150
+                   border-b-0
+                   flex items-center justify-center gap-3
+                 "
+               >
+                 <span>QUERO ACESSO VITALÍCIO</span>
+                 <ArrowRight className="w-7 h-7 stroke-[3]" />
+                 
+                 {/* Shine Effect */}
+                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
+               </button>
+             </div>
+             
+             <div className="mt-16 flex flex-wrap justify-center gap-6 text-sm opacity-70">
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-brand-green"/> Acesso Imediato</span>
+                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-brand-green"/> Compra Segura</span>
+                <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-brand-green"/> Garantia de 30 Dias</span>
+             </div>
            </div>
         </div>
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-brand-dark text-gray-400 py-12 text-sm border-t border-gray-800">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-             <Hammer className="w-5 h-5 text-brand-blue" />
-             <span className="font-bold text-white text-lg">MÃOS DA OBRA</span>
+      <footer className="bg-brand-dark text-gray-500 py-12 text-sm border-t border-gray-800 pb-32 md:pb-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+            <div className="flex items-center gap-2">
+               <div className="bg-brand-blue p-1.5 rounded-lg">
+                 <Hammer className="w-4 h-4 text-white" />
+               </div>
+               <span className="font-bold text-white text-lg tracking-tight">MÃOS DA OBRA</span>
+            </div>
+            <div className="flex gap-8 font-medium">
+               <a href="#" className="hover:text-white transition">Termos de Uso</a>
+               <a href="#" className="hover:text-white transition">Política de Privacidade</a>
+               <a href="#" className="hover:text-white transition">Fale Conosco</a>
+            </div>
           </div>
-          <div className="flex gap-8">
-             <a href="#" className="hover:text-white transition">Termos de Uso</a>
-             <a href="#" className="hover:text-white transition">Política de Privacidade</a>
-             <a href="#" className="hover:text-white transition">Suporte</a>
-          </div>
-          <div className="text-center md:text-right">
-             <p>&copy; 2024 Mãos da Obra App. Todos os direitos reservados.</p>
+          <div className="text-center md:text-right border-t border-gray-800 pt-8">
+             <p>&copy; {new Date().getFullYear()} Mãos da Obra App. Todos os direitos reservados.</p>
+             <p className="mt-2 text-xs text-gray-600">Feito para quem constrói sonhos.</p>
           </div>
         </div>
       </footer>
+
+      {/* Sticky Mobile Footer CTA */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-gray-200 z-50 md:hidden flex items-center justify-between shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
+        <div className="flex flex-col">
+          <span className="text-xs text-gray-500 font-medium">Planos a partir de</span>
+          <span className="text-lg font-bold text-brand-dark">R$ 29,90</span>
+        </div>
+        <button 
+          onClick={() => scrollToSection('precos')}
+          className="bg-brand-blue text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-brand-blue/20"
+        >
+          Ver Planos
+        </button>
+      </div>
+
     </div>
   );
 };

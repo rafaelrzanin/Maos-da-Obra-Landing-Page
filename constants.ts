@@ -6,16 +6,16 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: 'Mensal',
     price: 'R$ 29,90',
     period: '/mês',
-    description: 'Para pequenas reformas ou testes rápidos.',
-    ctaText: 'Assinar Mensal',
+    description: 'Para quem quer testar ou fazer uma pequena reforma.',
+    ctaText: 'Começar Mensal',
     features: [
-      { text: 'Controle de execução', included: true },
-      { text: 'Controle de materiais', included: true },
-      { text: 'Controle de gastos', included: true },
-      { text: 'Acesso ao dashboard', included: true },
-      { text: 'Suporte básico', included: true },
-      { text: 'Calculadora de Obra', included: false },
-      { text: 'Pacote de Contratos', included: false },
+      { text: 'Controle de obras e reformas', included: true },
+      { text: 'Lista de compras automática', included: true },
+      { text: 'Gráficos simples de entender', included: true },
+      { text: 'Suporte por e-mail', included: true },
+      { text: 'IA Zé da Obra (Assistente)', included: false },
+      { text: 'Calculadora de Materiais', included: false },
+      { text: 'Modelos de Contratos Prontos', included: false },
     ],
   },
   {
@@ -23,38 +23,40 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: 'Semestral',
     price: 'R$ 97,00',
     period: '/semestre',
-    description: 'Ideal para obras de médio prazo.',
-    ctaText: 'Assinar Semestral',
-    savings: 'Economize 45%',
-    ribbon: 'Mais Economizado',
+    description: 'Perfeito para construção de casas (duração média).',
+    ctaText: 'Escolher Semestral',
+    savings: 'Economize R$ 82,40',
+    ribbon: 'Melhor para Obras Médias',
     features: [
-      { text: 'Todo o plano Mensal', included: true },
-      { text: 'Economia de 45% no valor', included: true },
-      { text: 'Prioridade no suporte', included: true },
-      { text: 'Acesso por 6 meses', included: true },
-      { text: 'Calculadora de Obra', included: false },
-      { text: 'Pacote de Contratos', included: false },
+      { text: 'Tudo do plano Mensal', included: true },
+      { text: 'Acesso por 6 meses completos', included: true },
+      { text: 'Prioridade no atendimento', included: true },
+      { text: 'Exportação de relatórios em PDF', included: true },
+      { text: 'IA Zé da Obra (Assistente)', included: false },
+      { text: 'Calculadora de Materiais', included: false },
+      { text: 'Modelos de Contratos Prontos', included: false },
     ],
   },
   {
     id: 'lifetime',
     name: 'VITALÍCIO',
     price: 'R$ 247,00',
-    period: 'pagamento único',
-    description: 'Pague uma vez, use para sempre. Acesso total.',
-    ctaText: 'Quero o Vitalício + Bônus',
+    period: 'PAGAMENTO ÚNICO',
+    description: 'Sem mensalidades. Use hoje, amanhã e em futuras reformas.',
+    ctaText: 'QUERO O ACESSO VITALÍCIO',
     highlight: true,
-    ribbon: '⭐ Mais Vendido',
+    ribbon: '⭐ OFERTA CAMPEÃ',
     features: [
-      { text: 'Acesso Vitalício ao App', included: true },
-      { text: 'Todas as atualizações futuras', included: true },
-      { text: 'Suporte VIP Prioritário', included: true },
-      { text: 'Multi-obras', included: true },
+      { text: 'Acesso para SEMPRE ao App', included: true },
+      { text: 'Nunca mais pague mensalidade', included: true },
+      { text: 'IA Zé da Obra (Ilimitado)', included: true },
+      { text: 'Todas as atualizações futuras grátis', included: true },
+      { text: 'Gerencie múltiplas obras ao mesmo tempo', included: true },
     ],
     bonuses: [
-      { title: 'Calculadora de Obra Completa', description: 'Metros, quantidades e custos exatos.' },
-      { title: 'Checklist de Reforma (40+ itens)', description: 'Evite erros e retrabalhos.' },
-      { title: 'Pacote de Contratos Profissionais', description: 'Segurança jurídica para sua obra.' },
+      { title: 'Calculadora Automática de Materiais', description: 'Saiba exato quantos tijolos e cimento comprar.' },
+      { title: 'Checklist Anti-Erro (40 itens)', description: 'O que conferir para o pedreiro não te enganar.' },
+      { title: 'Kit de Contratos Blindados', description: 'Modelos prontos para assinar com a mão de obra.' },
     ]
   },
 ];
@@ -62,49 +64,49 @@ export const PRICING_PLANS: PricingPlan[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: 'Ricardo M.',
-    role: 'Engenheiro Civil',
-    quote: 'Gerencio 3 obras simultaneamente. O MÃOS DA OBRA reduziu meu tempo de gestão em 40%. A lista de materiais automática é genial.',
-    avatar: 'https://picsum.photos/100/100?random=1',
-    savings: '40% tempo ganho'
+    name: 'Mariana Costa',
+    role: 'Construindo a 1ª Casa',
+    quote: 'Eu não entendo nada de obra. O app me disse exatamente o que comprar. O pedreiro pediu 50 sacos de cimento, o app calculou 35. O app estava certo. Só aí economizei R$ 600.',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150',
+    savings: 'Economizou R$ 4.500 no total'
   },
   {
     id: 2,
-    name: 'Ana Paula S.',
-    role: 'Proprietária',
-    quote: 'Eu não entendia nada de obra. Com o app, evitei comprar material errado e economizei R$ 15.000 no final da construção da minha casa.',
-    avatar: 'https://picsum.photos/100/100?random=2',
-    savings: 'R$ 15k economizados'
+    name: 'Roberto V.',
+    role: 'Reformando Apartamento',
+    quote: 'Minha última reforma atrasou 3 meses. Com o Mãos da Obra, usei o cronograma visual e mostrei pro mestre de obras. Terminamos 1 semana ANTES do prazo.',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
+    savings: 'Obra entregue antecipada'
   },
   {
     id: 3,
-    name: 'Carlos Eduardo',
-    role: 'Empreiteiro',
-    quote: 'O cronograma visual ajuda minha equipe a saber exatamente o que fazer. Acabaram as desculpas de atraso.',
-    avatar: 'https://picsum.photos/100/100?random=3',
-    savings: 'Obra no prazo'
+    name: 'Fernanda L.',
+    role: 'Autônoma',
+    quote: 'A melhor parte é o controle financeiro. Antes eu anotava no caderno e perdia as notas. Agora sei centavo por centavo para onde foi meu dinheiro. Sensação de paz.',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150',
+    savings: 'Zero dor de cabeça'
   }
 ];
 
 export const FAQS: FaqItem[] = [
   {
-    question: 'Funciona para obras pequenas e grandes?',
-    answer: 'Sim! O app é escalável. Você pode usar desde a reforma de um banheiro até a construção de um prédio residencial. As ferramentas se adaptam ao tamanho do projeto.'
+    question: 'Eu não entendo nada de construção, serve pra mim?',
+    answer: 'Sim! O Mãos da Obra foi criado justamente para você. Não usamos termos técnicos complicados. Além disso, no plano Vitalício, você conta com o Zé da Obra (IA), nosso assistente virtual que responde qualquer dúvida na hora.'
   },
   {
-    question: 'Sou leigo, consigo usar?',
-    answer: 'Absolutamente. Desenvolvemos o MÃOS DA OBRA pensando justamente em quem não é da área. A interface é intuitiva e o app te guia pelo passo a passo da obra.'
+    question: 'Funciona para reformas pequenas (ex: só um banheiro)?',
+    answer: 'Com certeza. Seja para trocar o piso de um quarto ou construir uma casa do zero, o princípio é o mesmo: evitar desperdício e atraso. Você ajusta o tamanho da obra dentro do app.'
   },
   {
-    question: 'Como ele gera economia real?',
-    answer: 'Através de três frentes: 1) Calculando materiais com exatidão para evitar sobras; 2) Monitorando preços e orçamento para evitar estouros; 3) Organizando o cronograma para evitar diárias extras de mão de obra.'
+    question: 'Como o app me faz economizar dinheiro?',
+    answer: 'De 3 formas: 1) A Calculadora evita que você compre material a mais (sobras); 2) O Checklist evita erros de execução (que geram retrabalho e custo dobrado); 3) O Controle Financeiro te alerta se você estiver gastando muito em itens supérfluos.'
   },
   {
-    question: 'Qual plano compensa mais?',
-    answer: 'Sem dúvida, o Plano Vitalício. Além de pagar uma única vez e ter acesso para sempre (inclusive para futuras reformas), você ganha R$ 300,00 em bônus exclusivos (Calculadora, Checklist e Contratos).'
+    question: 'Por que o Plano Vitalício vale mais a pena?',
+    answer: 'Uma obra dura meses. Com o Vitalício, você paga um valor único (menor que uma diária de pedreiro) e tem a ferramenta para sempre. Além disso, SOMENTE no Vitalício você tem acesso ao Zé da Obra (IA) e ganha os contratos e checklists.'
   },
   {
-    question: 'Posso usar para obra de terceiros?',
-    answer: 'Sim! Muitos engenheiros e arquitetos usam o app para gerenciar as obras de seus clientes, centralizando as informações em um só lugar.'
+    question: 'Tenho garantia?',
+    answer: 'Sim. Você tem 30 dias para testar. Se achar que o app não está te ajudando a economizar, devolvemos 100% do seu dinheiro. Sem perguntas, basta enviar um e-mail.'
   }
 ];
