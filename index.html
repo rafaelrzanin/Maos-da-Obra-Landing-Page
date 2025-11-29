@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MÃOS DA OBRA - O Fim dos Gastos Extras na Sua Obra</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
     <script>
       tailwind.config = {
         theme: {
@@ -45,6 +50,7 @@
         }
       }
     </script>
+    
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -52,7 +58,6 @@
         overflow-x: hidden;
       }
       
-      /* Smooth gradients for text */
       .text-gradient {
         background: linear-gradient(135deg, #0057FF 0%, #1EC28B 100%);
         -webkit-background-clip: text;
@@ -65,7 +70,6 @@
         -webkit-text-fill-color: transparent;
       }
 
-      /* Premium Glassmorphism */
       .glass-panel {
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(12px);
@@ -80,34 +84,113 @@
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
-
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #F1F1F1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #C1C1C1;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #0057FF;
-      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
-  }
-}
-</script>
-</head>
-  <body>
-    <div id="root"></div>
+  </head>
+  
+  <body class="bg-brand-gray text-brand-dark antialiased">
+    
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-panel">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center gap-2">
+            <i data-lucide="hammer" class="h-8 w-8 text-brand-blue"></i>
+            <span class="font-display font-bold text-2xl tracking-tight text-brand-dark">
+              Mãos da <span class="text-brand-blue">Obra</span>
+            </span>
+          </div>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#features" class="text-gray-600 hover:text-brand-blue font-medium transition">Funcionalidades</a>
+            <a href="#about" class="text-gray-600 hover:text-brand-blue font-medium transition">Sobre</a>
+            <button class="bg-brand-blue hover:bg-brand-blueDark text-white px-6 py-2.5 rounded-full font-medium transition shadow-lg shadow-brand-blue/30">
+              Começar Agora
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <div class="absolute top-0 right-0 -z-10 opacity-30 animate-pulse-slow">
+         <div class="w-96 h-96 bg-brand-blue rounded-full blur-3xl"></div>
+      </div>
+      <div class="absolute bottom-0 left-0 -z-10 opacity-20">
+         <div class="w-72 h-72 bg-brand-green rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel mb-8 animate-fade-in-up">
+          <span class="w-2 h-2 rounded-full bg-brand-green"></span>
+          <span class="text-sm font-medium text-gray-600">Gestão inteligente para sua construção</span>
+        </div>
+        
+        <h1 class="font-display text-5xl lg:text-7xl font-bold mb-6 tracking-tight animate-fade-in-up" style="animation-delay: 0.1s;">
+          O Fim dos <span class="text-gradient">Gastos Extras</span><br />na Sua Obra
+        </h1>
+        
+        <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">
+          Pare de perder dinheiro com desperdícios e falta de planejamento. Tenha o controle total dos materiais e cronograma na palma da sua mão.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+          <button class="flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blueDark text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-xl shadow-brand-blue/30 transform hover:-translate-y-1">
+            Quero Economizar na Obra
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </button>
+          <button class="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-brand-dark border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg transition">
+            <i data-lucide="play-circle" class="w-5 h-5 text-brand-blue"></i>
+            Ver Demonstração
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-brand-dark mb-4">Tudo o que você precisa</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">Ferramentas profissionais simplificadas para quem está construindo ou reformando.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glass-panel p-8 rounded-2xl hover:border-brand-blue/30 transition duration-300 group">
+            <div class="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-blue/20 transition">
+              <i data-lucide="calculator" class="w-6 h-6 text-brand-blue"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-3">Calculadora de Materiais</h3>
+            <p class="text-gray-600">Saiba exatamente a quantidade de cimento, tijolos e pisos. Evite sobras e desperdícios.</p>
+          </div>
+
+          <div class="glass-panel p-8 rounded-2xl hover:border-brand-blue/30 transition duration-300 group">
+            <div class="w-12 h-12 bg-brand-green/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-green/20 transition">
+              <i data-lucide="dollar-sign" class="w-6 h-6 text-brand-green"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-3">Controle Financeiro</h3>
+            <p class="text-gray-600">Acompanhe cada centavo gasto. Crie alertas de orçamento e não estoure a conta.</p>
+          </div>
+
+          <div class="glass-panel p-8 rounded-2xl hover:border-brand-blue/30 transition duration-300 group">
+            <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition">
+              <i data-lucide="calendar-check" class="w-6 h-6 text-purple-600"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-3">Cronograma Realista</h3>
+            <p class="text-gray-600">Monitore as etapas da obra. Saiba se o pedreiro está no prazo ou se vai atrasar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-brand-dark text-white py-12 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center gap-2 mb-4 md:mb-0">
+          <i data-lucide="hammer" class="h-6 w-6 text-brand-blue"></i>
+          <span class="font-display font-bold text-xl">Mãos da Obra</span>
+        </div>
+        <p class="text-gray-400 text-sm">© 2024 Mãos da Obra. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
