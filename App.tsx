@@ -280,12 +280,16 @@ const App: React.FC = () => {
             
             {/* Hero Copy */}
             <div className="lg:w-1/2 space-y-6 md:space-y-8 text-center lg:text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 bg-white border border-gray-200 shadow-sm px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold text-gray-700 animate-float">
-                <span className="flex h-2 w-2 relative">
+              
+              {/* Premium Floating Tag - REDESIGNED */}
+              <div className="inline-flex items-center gap-2.5 bg-white/80 backdrop-blur-md border border-brand-gold/30 shadow-[0_0_15px_rgba(217,119,6,0.15)] px-5 py-2 rounded-full text-xs md:text-sm font-medium text-slate-600 animate-float hover:scale-105 transition-transform cursor-default select-none">
+                <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-gold"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-gold"></span>
                 </span>
-                O ÚNICO com Assistente de Obra por Inteligência Artificial
+                <span>
+                   Inovação Exclusiva: O único com <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-amber-600">IA de Engenharia</span>
+                </span>
               </div>
               
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-brand-dark">
