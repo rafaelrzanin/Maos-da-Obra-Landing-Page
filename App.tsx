@@ -285,7 +285,7 @@ const App: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-gold"></span>
                 </span>
-                Agora com Inteligência Artificial
+                O ÚNICO com Assistente de Obra por Inteligência Artificial
               </div>
               
               <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-brand-dark">
@@ -632,9 +632,13 @@ const App: React.FC = () => {
                 key={plan.id} 
                 className={`relative rounded-3xl p-6 md:p-8 transition-all duration-300 flex flex-col h-full ${
                   plan.highlight 
-                    ? 'bg-gradient-to-b from-white to-gray-50 border-4 border-brand-gold shadow-[0_0_60px_rgba(217,119,6,0.25)] scale-100 md:scale-105 z-20 order-first md:order-none mb-8 md:mb-0' 
+                    ? 'bg-gradient-to-b from-white to-gray-50 border-4 border-brand-gold shadow-[0_0_60px_rgba(217,119,6,0.25)] scale-100 md:scale-105 z-20 mb-8 md:mb-0' 
                     : 'bg-white/5 border border-white/10 text-white hover:bg-white/10'
-                } ${plan.id === 'lifetime' ? 'md:order-2 order-3' : plan.id === 'semiannual' ? 'md:order-3 order-2' : 'md:order-1 order-1'}`}
+                } ${
+                    plan.id === 'monthly' ? 'order-1 md:order-1' :
+                    plan.id === 'semiannual' ? 'order-2 md:order-3' :
+                    'order-3 md:order-2' // lifetime
+                }`}
               >
                 {plan.ribbon && (
                   <div className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${plan.highlight ? 'bg-brand-gold text-white animate-pulse-slow' : 'bg-slate-600 text-white'} px-6 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap`}>

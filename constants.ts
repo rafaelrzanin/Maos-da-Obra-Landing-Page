@@ -14,6 +14,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       { text: 'Gráficos simples de entender', included: true },
       { text: 'Suporte por e-mail', included: true },
       { text: 'IA Zé da Obra (Assistente)', included: false },
+      { text: 'Checklist Anti-Erro (40 itens)', included: false },
       { text: 'Calculadora de Materiais', included: false },
       { text: 'Modelos de Contratos Prontos', included: false },
     ],
@@ -33,6 +34,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       { text: 'Prioridade no atendimento', included: true },
       { text: 'Exportação de relatórios em PDF', included: true },
       { text: 'IA Zé da Obra (Assistente)', included: false },
+      { text: 'Checklist Anti-Erro (40 itens)', included: false },
       { text: 'Calculadora de Materiais', included: false },
       { text: 'Modelos de Contratos Prontos', included: false },
     ],
@@ -55,7 +57,7 @@ export const PRICING_PLANS: PricingPlan[] = [
     ],
     bonuses: [
       { title: 'Calculadora Automática de Materiais', description: 'Saiba exato quantos tijolos e cimento comprar.' },
-      { title: 'Checklist Anti-Erro (40 itens)', description: 'O que conferir para o pedreiro não te enganar.' },
+      { title: 'Checklist Anti-Erro (40 itens)', description: 'Previna erros que só aparecem depois: piso empoçando, falta de tomadas e ralos esquecidos.' },
       { title: 'Kit de Contratos Blindados', description: 'Modelos prontos para assinar com a mão de obra.' },
     ]
   },
