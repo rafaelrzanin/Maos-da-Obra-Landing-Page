@@ -986,14 +986,16 @@
     </footer>
 
     <!-- STICKY MOBILE FOOTER -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-gray-200 z-50 md:hidden flex items-center justify-between shadow-[0_-5px_20px_rgba(0,0,0,0.1)]">
+    <div class="fixed bottom-0 left-0 right-0 px-4 py-3 bg-white/95 backdrop-blur-xl border-t border-gray-100 z-50 md:hidden flex items-center justify-between shadow-[0_-8px_30px_rgba(0,0,0,0.08)]">
         <div class="flex flex-col">
-          <span class="text-xs text-gray-500 font-medium">Planos a partir de</span>
-          <span class="text-lg font-bold text-brand-dark">R$ 29,90</span>
+          <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Comece com apenas</span>
+          <div class="flex items-center gap-1.5">
+             <span class="text-2xl font-display font-black text-brand-dark leading-none">R$ 29,90</span>
+          </div>
         </div>
         <button 
           onclick="scrollToSection('precos')"
-          class="bg-brand-gold text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-brand-gold/20"
+          class="bg-brand-gold text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-brand-gold/25 border-b-4 border-amber-700 active:border-b-0 active:translate-y-1 transition-all"
         >
           Ver Planos
         </button>
@@ -1228,7 +1230,7 @@
                 return "É simples: o app organiza sua obra. Ele gera a lista de compras automática, controla quanto você gastou e te avisa se a obra está atrasada. Eu (a IA) fico disponível pra tirar dúvidas técnicas na hora.";
             }
             if (lowerInput.includes('garantia') || lowerInput.includes('teste') || lowerInput.includes('reembolso')) {
-                return "Pode ficar tranquilo! 🛡️ Você tem <strong>30 dias de garantia</strong>. Se não gostar ou achar que não economizou, devolvemos todo o seu dinheiro.";
+                return "Pode ficar tranquilo! 🛡️ Você tem <strong>30 dias de garantia</strong>. Se não gostar ou achar que não economizou, devolvemos todo o seu dinheiro. Sem perguntas, basta enviar um e-mail.";
             }
             if (lowerInput.includes('vitalício') || lowerInput.includes('vitalicio')) {
                 return "O Vitalício é o favorito! 🏆 Além de acesso eterno (para essa e futuras obras), você libera o <strong>Chat comigo (IA)</strong> e ganha pacotes de contratos e checklists profissionais.";
