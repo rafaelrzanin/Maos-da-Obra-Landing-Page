@@ -301,8 +301,8 @@
                                 </div>
                                 <!-- Zé da Obra Teaser -->
                                 <div class="bg-gradient-to-r from-brand-dark to-slate-800 p-3 rounded-xl shadow-md flex items-center gap-3 border border-white/10">
-                                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                        <i data-lucide="bot" class="w-5 h-5 text-brand-gold"></i>
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border border-brand-gold/30 bg-brand-dark">
+                                        <img src="ze.png" alt="Zé" class="w-full h-full object-cover ze-avatar" />
                                     </div>
                                     <div>
                                         <p class="text-[10px] text-gray-300 font-medium">Dúvida técnica?</p>
@@ -455,8 +455,8 @@
                  </div>
 
                  <div class="flex items-center gap-4 mb-4">
-                    <div class="w-14 h-14 bg-brand-dark rounded-2xl flex items-center justify-center text-brand-gold shadow-lg shadow-brand-dark/20 flex-shrink-0">
-                        <i data-lucide="bot" class="w-8 h-8"></i>
+                    <div class="w-14 h-14 bg-brand-dark rounded-2xl flex items-center justify-center shadow-lg shadow-brand-dark/20 flex-shrink-0 overflow-hidden border-2 border-brand-gold/20">
+                         <img src="ze.png" alt="Zé da Obra" class="w-full h-full object-cover ze-avatar">
                     </div>
                     <h3 class="text-2xl md:text-3xl font-bold text-brand-dark leading-tight">Zé da Obra:<br/> Sua IA Especialista</h3>
                  </div>
@@ -483,8 +483,8 @@
                        <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-sm mx-auto overflow-hidden flex flex-col h-[320px]">
                             <div class="bg-brand-dark p-4 flex items-center gap-3">
                                 <div class="relative">
-                                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-slate-600">
-                                        <i data-lucide="bot" class="w-6 h-6 text-brand-dark"></i>
+                                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-slate-600 overflow-hidden">
+                                        <img src="ze.png" alt="Zé da Obra" class="w-full h-full object-cover ze-avatar">
                                     </div>
                                     <div class="absolute bottom-0 right-0 w-3 h-3 bg-brand-gold border-2 border-brand-dark rounded-full"></div>
                                 </div>
@@ -505,7 +505,7 @@
                                 <div class="flex justify-start">
                                     <div class="bg-white text-gray-700 rounded-2xl rounded-tl-sm p-3 max-w-[90%] text-xs shadow-sm border border-gray-200">
                                         <p class="font-bold text-brand-gold mb-1 flex items-center gap-1">
-                                            <i data-lucide="bot" class="w-3 h-3"></i> Análise do Zé:
+                                            <img src="ze.png" alt="Zé" class="w-4 h-4 rounded-full border border-brand-gold/30 ze-avatar"> Análise do Zé:
                                         </p>
                                         <p class="mb-2">⚠️ <span class="font-bold">Atenção!</span> Essa quantidade está muito alta.</p>
                                         <p>Para 40m² com 5cm de espessura, o cálculo correto seria aprox. <strong>35 sacos</strong> (traço 1:3).</p>
@@ -1006,6 +1006,26 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // CONFIGURAÇÃO DA IMAGEM DO ZÉ
+        // Coloque aqui a URL da imagem (Ex: "https://imgur.com/..." ou "ze.png")
+        const ZE_IMAGE_SRC = "ze.png";
+        
+        // Fallback: Avatar 3D genérico se a imagem falhar
+        const ZE_FALLBACK_URL = "https://cdn3d.iconscout.com/3d/premium/thumb/construction-worker-5666249-4721111.png";
+
+        function getZeImage() {
+            return ZE_IMAGE_SRC;
+        }
+
+        // Script para garantir que imagens com erro carreguem o fallback
+        document.addEventListener('DOMContentLoaded', () => {
+             document.querySelectorAll('.ze-avatar').forEach(img => {
+                 img.onerror = function() {
+                     this.src = ZE_FALLBACK_URL;
+                 };
+             });
+        });
+
         // Init Lucide Icons
         lucide.createIcons();
         document.getElementById('year').textContent = new Date().getFullYear();
@@ -1080,17 +1100,6 @@
         function toggleFaq(index) {
             const answer = document.getElementById(`faq-answer-${index}`);
             const iconDiv = document.getElementById(`faq-icon-${index}`);
-            
-            // Close others (optional)
-            /*
-            faqs.forEach((_, i) => {
-                if (i !== index) {
-                    document.getElementById(`faq-answer-${i}`).classList.add('hidden');
-                    document.getElementById(`faq-icon-${i}`).className = "p-2 rounded-full transition-colors flex-shrink-0 bg-gray-100 text-gray-400";
-                    document.getElementById(`faq-icon-${i}`).innerHTML = `<i data-lucide="chevron-down" class="w-4 h-4"></i>`;
-                }
-            });
-            */
 
             if (answer.classList.contains('hidden')) {
                 answer.classList.remove('hidden');
@@ -1112,6 +1121,8 @@
         ];
 
         function renderChat() {
+            const zeImage = getZeImage();
+            
             if (!isChatOpen) {
                 chatContainer.innerHTML = `
                     <button 
@@ -1138,14 +1149,17 @@
                     } else {
                         msgsHtml += `
                             <div class="flex justify-start animate-fade-in-up">
-                                <div class="bg-white text-slate-700 rounded-2xl rounded-tl-sm p-3 max-w-[90%] text-sm shadow-sm border border-gray-200">
-                                    <p class="font-bold text-brand-gold mb-1 text-xs">Zé da Obra:</p>
-                                    <p>${msg.text}</p>
-                                    ${messages.length === 1 ? `
-                                    <div class="mt-3 flex flex-wrap gap-2">
-                                        <button onclick="sendUserMessage('Qual o preço?')" class="bg-amber-50 hover:bg-amber-100 text-brand-gold text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-amber-100">💰 Preços</button>
-                                        <button onclick="sendUserMessage('Como funciona?')" class="bg-amber-50 hover:bg-amber-100 text-brand-gold text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-amber-100">🛠️ Funcionalidades</button>
-                                    </div>` : ''}
+                                <div class="flex items-end gap-2 max-w-[90%]">
+                                    <img src="${zeImage}" alt="Zé" class="w-6 h-6 rounded-full border border-gray-200 mb-1 ze-avatar">
+                                    <div class="bg-white text-slate-700 rounded-2xl rounded-tl-sm p-3 text-sm shadow-sm border border-gray-200">
+                                        <p class="font-bold text-brand-gold mb-1 text-xs">Zé da Obra:</p>
+                                        <p>${msg.text}</p>
+                                        ${messages.length === 1 ? `
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <button onclick="sendUserMessage('Qual o preço?')" class="bg-amber-50 hover:bg-amber-100 text-brand-gold text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-amber-100">💰 Preços</button>
+                                            <button onclick="sendUserMessage('Como funciona?')" class="bg-amber-50 hover:bg-amber-100 text-brand-gold text-xs font-bold px-3 py-1.5 rounded-full transition-colors border border-amber-100">🛠️ Funcionalidades</button>
+                                        </div>` : ''}
+                                    </div>
                                 </div>
                             </div>`;
                     }
@@ -1156,8 +1170,8 @@
                     <div class="bg-brand-dark p-4 flex justify-between items-center shadow-md z-10">
                         <div class="flex items-center gap-3">
                             <div class="relative">
-                                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-slate-600">
-                                    <i data-lucide="bot" class="w-6 h-6 text-brand-dark"></i>
+                                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border-2 border-slate-600 overflow-hidden">
+                                    <img src="${zeImage}" alt="Zé da Obra" class="w-full h-full object-cover ze-avatar">
                                 </div>
                                 <div class="absolute bottom-0 right-0 w-3 h-3 bg-brand-gold border-2 border-brand-dark rounded-full"></div>
                             </div>
@@ -1177,10 +1191,13 @@
                     <div id="chat-msgs" class="flex-1 bg-brand-surface p-4 space-y-4 overflow-y-auto scroll-smooth">
                         ${msgsHtml}
                         <div id="typing-indicator" class="hidden flex justify-start animate-fade-in-up">
-                            <div class="bg-white text-slate-500 rounded-2xl rounded-tl-sm p-3 shadow-sm border border-gray-200 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></span>
-                                <span class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></span>
-                                <span class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></span>
+                            <div class="flex items-end gap-2">
+                                <img src="${zeImage}" alt="Zé" class="w-6 h-6 rounded-full border border-gray-200 mb-1 ze-avatar">
+                                <div class="bg-white text-slate-500 rounded-2xl rounded-tl-sm p-3 shadow-sm border border-gray-200 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></span>
+                                    <span class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></span>
+                                    <span class="w-1.5 h-1.5 bg-slate-400 rounded-full typing-dot"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1204,6 +1221,13 @@
                 
                 const msgsDiv = document.getElementById('chat-msgs');
                 msgsDiv.scrollTop = msgsDiv.scrollHeight;
+                
+                // Re-attach error handlers for new images in chat
+                document.querySelectorAll('.ze-avatar').forEach(img => {
+                    img.onerror = function() {
+                        this.src = ZE_FALLBACK_URL;
+                    };
+                });
             }
             lucide.createIcons();
         }
@@ -1230,7 +1254,7 @@
                 return "É simples: o app organiza sua obra. Ele gera a lista de compras automática, controla quanto você gastou e te avisa se a obra está atrasada. Eu (a IA) fico disponível pra tirar dúvidas técnicas na hora.";
             }
             if (lowerInput.includes('garantia') || lowerInput.includes('teste') || lowerInput.includes('reembolso')) {
-                return "Pode ficar tranquilo! 🛡️ Você tem <strong>30 dias de garantia</strong>. Se não gostar ou achar que não economizou, devolvemos todo o seu dinheiro. Sem perguntas, basta enviar um e-mail.";
+                return "Pode ficar tranquilo! 🛡️ Você tem <strong>30 dias de garantia</strong>. Se não gostar ou achar que não economizou, devolvemos 100% do seu dinheiro. Sem perguntas, basta enviar um e-mail.";
             }
             if (lowerInput.includes('vitalício') || lowerInput.includes('vitalicio')) {
                 return "O Vitalício é o favorito! 🏆 Além de acesso eterno (para essa e futuras obras), você libera o <strong>Chat comigo (IA)</strong> e ganha pacotes de contratos e checklists profissionais.";
