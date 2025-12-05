@@ -241,27 +241,32 @@
                             
                             <!-- Chat Area -->
                             <div class="flex-1 p-4 space-y-4 bg-gray-100 overflow-hidden relative">
-                                <!-- Msg Bot -->
+                                
+                                <!-- Msg User (Iniciando) -->
+                                <div class="flex gap-2 justify-end">
+                                    <div class="bg-brand-gold text-white p-3 rounded-2xl rounded-tr-none shadow-sm text-xs max-w-[80%]">
+                                        Zé, o pedreiro pediu 50 sacos de cimento pra laje. Tá certo isso?
+                                    </div>
+                                </div>
+
+                                <!-- Msg Bot (Respondendo) -->
                                 <div class="flex gap-2">
                                     <img src="ze.png" class="w-8 h-8 rounded-full bg-gray-300 border border-gray-400 ze-avatar">
                                     <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-xs text-gray-700 max-w-[80%]">
-                                        Notei que você vai comprar 50 sacos de cimento. Pela metragem da laje, 42 sacos são suficientes. Quer ajustar a lista?
+                                        Pela metragem que cadastramos, 42 sacos são suficientes. Se comprar 50, vai sobrar e estragar. 
+                                        <br><br>
+                                        <strong>Economia estimada: R$ 280,00.</strong>
+                                        <br>Quer que eu ajuste a lista de compras?
                                     </div>
                                 </div>
+                                
                                 <!-- Msg User -->
                                 <div class="flex gap-2 justify-end">
                                     <div class="bg-brand-gold text-white p-3 rounded-2xl rounded-tr-none shadow-sm text-xs max-w-[80%]">
-                                        Nossa, sério? Pode ajustar sim Zé!
+                                        Nossa, sério? Pode ajustar sim!
                                     </div>
                                 </div>
-                                <!-- Msg Bot -->
-                                <div class="flex gap-2">
-                                    <img src="ze.png" class="w-8 h-8 rounded-full bg-gray-300 border border-gray-400 ze-avatar">
-                                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-xs text-gray-700 max-w-[80%]">
-                                        <p class="font-bold text-green-600 mb-1 flex items-center gap-1"><i data-lucide="trending-up" class="w-3 h-3"></i> Economia: R$ 280,00</p>
-                                        Lista atualizada! Mais alguma coisa?
-                                    </div>
-                                </div>
+
                             </div>
 
                             <!-- Floating Action Button -->
@@ -405,12 +410,18 @@
                 <!-- Visual Element: The Brain -->
                 <div class="flex-1 relative">
                     <div class="absolute inset-0 bg-brand-gold blur-[100px] opacity-20"></div>
-                    <div class="glass-panel p-8 rounded-3xl relative border-brand-gold/20 border z-10">
+                    <div class="glass-panel p-8 rounded-3xl relative border-brand-gold/20 border z-10 pt-16">
+                        
+                        <!-- User Bubble (Pergunta) -->
+                        <div class="absolute -top-6 right-0 bg-brand-gold text-white text-xs p-3 rounded-lg rounded-br-none shadow-lg transform rotate-2 max-w-[220px] z-20 font-bold">
+                            "Zé, esse orçamento do eletricista tá justo?"
+                        </div>
+
                         <div class="flex items-start gap-6">
                             <img src="ze.png" class="w-20 h-20 rounded-full border-2 border-brand-gold ze-avatar bg-gray-800 object-cover">
                             <div class="flex-1">
                                 <div class="bg-white/5 p-4 rounded-xl rounded-tl-none border border-white/10 mb-4">
-                                    <p class="text-sm text-gray-300 italic">"Analisei o orçamento do eletricista. Ele está cobrando R$ 45,00 o metro do fio que custa R$ 12,00 na loja da esquina. Recomendo comprar o material separado."</p>
+                                    <p class="text-sm text-gray-300 italic">"Analisei aqui. Ele cobrou R$ 45,00 no metro do fio que achei por R$ 12,00 na loja da esquina. Se você comprar o material, economiza R$ 890,00."</p>
                                 </div>
                                 <div class="flex gap-2">
                                     <span class="px-3 py-1 rounded bg-brand-accent/20 text-brand-accent text-xs font-bold">Economia: R$ 890,00</span>
@@ -419,6 +430,48 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUS SECTION (NEW) -->
+    <section class="py-20 bg-brand-dark relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-brand-gold font-bold tracking-widest uppercase text-sm">Presente Especial</span>
+                <h2 class="text-3xl md:text-4xl font-display font-bold text-white mt-2">
+                    Leve de Bônus no <span class="text-brand-gold">Plano Vitalício</span>
+                </h2>
+                <p class="text-gray-400 mt-4">Ferramentas essenciais para blindar sua obra contra amadores.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Bônus 1 -->
+                <div class="bg-white/5 p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-colors">
+                    <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="calculator" class="w-5 h-5 text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Calculadora Automática</h3>
+                    <p class="text-sm text-gray-400">Nunca mais sobe tijolo ou falta cimento. Saiba a quantidade exata de materiais em segundos.</p>
+                </div>
+
+                <!-- Bônus 2 -->
+                <div class="bg-white/5 p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-colors">
+                    <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="file-text" class="w-5 h-5 text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Pacote de Contratos</h3>
+                    <p class="text-sm text-gray-400">Modelos jurídicos prontos para fechar com pedreiros, eletricistas e pintores com segurança.</p>
+                </div>
+
+                <!-- Bônus 3 -->
+                <div class="bg-white/5 p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-colors">
+                    <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="clipboard-check" class="w-5 h-5 text-brand-gold"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Checklist Anti-Dor-de-Cabeça</h3>
+                    <p class="text-sm text-gray-400">+60 itens para conferir na entrega da obra. Caimento de água, tomadas, infiltrações e mais.</p>
                 </div>
             </div>
         </div>
@@ -604,8 +657,8 @@
                             <span class="text-gray-200 font-medium">Gestão Financeira Completa</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <div class="bg-brand-gold/20 p-1.5 rounded-full"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i></div>
-                            <span class="text-gray-200 font-medium">Suporte Prioritário</span>
+                            <div class="bg-brand-gold/20 p-1.5 rounded-full"><i data-lucide="gift" class="w-4 h-4 text-brand-gold"></i></div>
+                            <span class="text-gray-200 font-bold text-brand-gold">+ 3 Bônus Exclusivos (Grátis)</span>
                         </div>
                     </div>
 
@@ -689,10 +742,9 @@
     <!-- MOBILE STICKY CTA -->
     <div class="md:hidden fixed bottom-0 w-full bg-brand-darkCard border-t border-white/10 p-4 z-50 flex items-center justify-between shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
         <div>
-            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-bold">Últimas horas</p>
-            <p class="text-white font-bold text-xl">R$ 247 <span class="text-xs font-normal text-gray-500">vitalício</span></p>
+            <p class="text-white font-bold text-lg">A partir de <span class="text-brand-gold">R$ 29,90</span></p>
         </div>
-        <button onclick="scrollToSection('precos')" class="btn-primary px-6 py-3 rounded-lg text-sm shadow-lg">
+        <button onclick="scrollToSection('precos')" class="btn-primary px-6 py-3 rounded-lg text-sm shadow-lg font-bold">
             Garantir Agora
         </button>
     </div>
