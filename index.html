@@ -2,21 +2,22 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#0F172A" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>MÃOS DA OBRA - A Revolução na Sua Construção</title>
-    <meta name="description" content="Controle sua obra pelo celular. A primeira IA que economiza seu dinheiro e evita dores de cabeça. Tão simples quanto o WhatsApp.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MÃOS DA OBRA - Gestão Descomplicada</title>
+    <meta name="description" content="Controle de obra para quem não entende de obra. Simples, passo a passo e com ajuda 24h.">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Tailwind Configuration -->
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -137,486 +138,391 @@
       .logo-tilt {
         transform: rotate(6deg);
       }
+
+      /* Carimbo "Xiii Deu Ruim" */
+      .stamp-box {
+        transform: rotate(-3deg);
+        border: 2px dashed rgba(255,255,255,0.2);
+      }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-gold selection:text-white">
 
+    <!-- HEADER / NAVBAR -->
     <header class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel border-b-0">
         <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- LOGO OFICIAL (Mantido, mas discreto) -->
             <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
-                <div class="w-12 h-12 bg-brand-gold rounded-2xl logo-tilt flex items-center justify-center shadow-lg shadow-brand-gold/20 transition-transform group-hover:scale-110">
-                    <i data-lucide="hard-hat" class="text-white w-7 h-7 fill-white/20"></i>
+                <div class="w-10 h-10 bg-brand-gold rounded-xl logo-tilt flex items-center justify-center shadow-lg shadow-brand-gold/20 transition-transform group-hover:scale-110">
+                    <i data-lucide="hard-hat" class="text-white w-5 h-5 fill-white/20"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-display font-bold text-xl leading-none tracking-tight text-white">MÃOS DA<br>OBRA</span>
+                    <span class="font-display font-bold text-lg leading-none tracking-tight text-white">MÃOS DA<br>OBRA</span>
                 </div>
             </div>
 
+            <!-- CTA Desktop (Suave) -->
             <div class="hidden md:flex items-center gap-6">
-                <a href="#funciona" class="text-gray-400 hover:text-white text-sm font-medium transition-colors">Como funciona</a>
-                <a href="#depoimentos" class="text-gray-400 hover:text-white text-sm font-medium transition-colors">Resultados</a>
-                <button onclick="scrollToSection('precos')" class="btn-primary px-6 py-2.5 rounded-full text-sm uppercase tracking-wide">
-                    Começar Agora
+                <a href="#como-funciona" class="text-gray-400 hover:text-white text-sm font-medium transition-colors">Como funciona</a>
+                <a href="#ze-da-obra" class="text-gray-400 hover:text-white text-sm font-medium transition-colors">Conhecer o Zé</a>
+                <button onclick="scrollToSection('precos')" class="btn-primary px-5 py-2 rounded-full text-xs uppercase tracking-wide">
+                    Ver Planos
                 </button>
             </div>
         </div>
     </header>
 
-    <section class="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <!-- 1) HERO SECTION - Acolhimento + Promessa Simples -->
+    <section class="relative pt-32 pb-12 md:pt-40 md:pb-24 overflow-hidden">
         <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)] pointer-events-none"></div>
-
-        <div class="container mx-auto px-4 relative z-10 text-center">
+        <div class="container mx-auto px-4 relative z-10">
             
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up">
-                <span class="flex h-2 w-2 relative">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Mais de 15.000 Obras Gerenciadas</span>
-            </div>
-
-            <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl leading-[1.1] md:leading-[1] mb-8 tracking-tight animate-fade-in-up" style="animation-delay: 0.1s">
-                Pare de Jogar<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-goldLight to-brand-gold text-glow">Dinheiro no Lixo.</span>
-            </h1>
-
-            <p class="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
-                A primeira Inteligência Artificial que gerencia sua obra 24h por dia. 
-                Economize até <span class="text-white font-bold border-b border-brand-gold">30% do orçamento</span> sem precisar entender de construção.
-            </p>
-
-            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up" style="animation-delay: 0.3s">
-                <button onclick="scrollToSection('precos')" class="btn-primary w-full md:w-auto px-8 py-4 rounded-xl text-lg md:text-xl shadow-2xl flex items-center justify-center gap-3 group">
-                    QUERO ECONOMIZAR AGORA
-                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                </button>
-                <div class="flex items-center gap-2 text-sm text-gray-400">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-brand-gold"></i>
-                    Garantia Blindada de 30 Dias
-                </div>
-            </div>
-
-            <div class="relative max-w-5xl mx-auto mt-12 animate-fade-in-up" style="animation-delay: 0.5s">
-                <div class="absolute -inset-1 bg-gradient-to-r from-brand-gold to-purple-600 rounded-2xl blur opacity-20"></div>
-                
-                <div class="relative bg-brand-darkCard border border-white/10 rounded-2xl shadow-2xl overflow-hidden aspect-[16/9] md:aspect-[21/9] flex items-center justify-center group">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Text Content (Left/Top) -->
+                <div class="flex-1 text-center md:text-left z-20">
                     
-                    <div class="absolute left-10 top-10 md:block hidden animate-float">
-                        <div class="bg-gray-800/80 backdrop-blur border border-white/10 p-4 rounded-xl flex items-center gap-4 shadow-xl">
-                            <div class="bg-red-500/20 p-2 rounded-lg"><i data-lucide="alert-triangle" class="text-red-500 w-6 h-6"></i></div>
-                            <div>
-                                <p class="text-xs text-gray-400 uppercase font-bold">Alerta de Preço</p>
-                                <p class="text-white text-sm">Cimento 20% acima da tabela!</p>
-                            </div>
-                        </div>
+                    <!-- Carimbo "Xiii..." (Discreto mas visível) -->
+                    <div class="inline-block mb-6 stamp-box px-4 py-2 rounded-lg bg-red-500/10 backdrop-blur-sm animate-fade-in-up">
+                        <span class="text-red-400 font-display font-bold text-sm uppercase tracking-widest">Xiii... aí deu ruim?</span>
                     </div>
 
-                    <div class="absolute right-10 bottom-10 md:block hidden animate-float" style="animation-delay: 2s">
-                        <div class="bg-gray-800/80 backdrop-blur border border-white/10 p-4 rounded-xl flex items-center gap-4 shadow-xl">
-                            <div class="bg-green-500/20 p-2 rounded-lg"><i data-lucide="check-circle-2" class="text-green-500 w-6 h-6"></i></div>
-                            <div>
-                                <p class="text-xs text-gray-400 uppercase font-bold">Economia Gerada</p>
-                                <p class="text-white text-sm font-bold">R$ 3.450,00 hoje</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h1 class="font-display font-bold text-5xl md:text-7xl leading-[1.1] mb-6 tracking-tight animate-fade-in-up text-white" style="animation-delay: 0.1s">
+                        Calma. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-goldLight to-brand-gold">Não precisa ser assim.</span>
+                    </h1>
 
-                    <div class="w-[280px] h-[550px] bg-black border-[8px] border-gray-800 rounded-[40px] shadow-2xl relative overflow-hidden transform md:scale-110">
-                        <div class="absolute top-0 w-full h-full bg-gray-50 flex flex-col">
-                            <div class="bg-brand-dark p-6 pt-10 text-white pb-8 rounded-b-3xl">
-                                <div class="flex justify-between items-center mb-4">
-                                    <div class="flex items-center gap-2">
-                                        <div class="w-8 h-8 bg-brand-gold rounded-lg logo-tilt flex items-center justify-center">
-                                            <i data-lucide="hard-hat" class="w-4 h-4 text-white"></i>
+                    <p class="text-lg md:text-xl text-gray-400 max-w-lg mx-auto md:mx-0 mb-8 font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                        Tem solução pros problemas da sua obra. <br>
+                        <span class="text-white font-medium">Simples. Feita pra quem não entende de obra.</span>
+                        <br><span class="text-sm text-gray-500 mt-2 block">Sem termos difíceis. Sem enrolação.</span>
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-up" style="animation-delay: 0.3s">
+                        <a href="#como-funciona" class="btn-primary px-8 py-4 rounded-xl text-lg font-bold shadow-2xl flex items-center justify-center gap-2 group">
+                            Quero ver como funciona
+                            <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                        </a>
+                        <a href="#ze-da-obra" class="btn-secondary px-8 py-4 rounded-xl text-lg font-bold flex items-center justify-center gap-2">
+                            Ver o Zé da Obra
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual (Right/Bottom) - Repurposed Phone Mockup -->
+                <div class="flex-1 w-full max-w-[320px] md:max-w-md mx-auto animate-fade-in-up" style="animation-delay: 0.4s">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-brand-gold/20 blur-2xl rounded-full"></div>
+                        <!-- Phone Mockup -->
+                         <div class="w-full bg-black border-[8px] border-gray-800 rounded-[40px] shadow-2xl relative overflow-hidden aspect-[9/19]">
+                            <div class="absolute top-0 w-full h-full bg-gray-50 flex flex-col">
+                                <!-- App Header -->
+                                <div class="bg-brand-dark p-6 pt-10 text-white pb-6 rounded-b-3xl">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="font-bold text-sm">Olá, Ricardo</span>
                                         </div>
-                                        <span class="font-bold">Mãos da Obra</span>
+                                        <div class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Obra em dia</div>
                                     </div>
-                                    <i data-lucide="bell" class="w-5 h-5 text-brand-gold"></i>
-                                </div>
-                                <p class="text-gray-400 text-xs">Saldo Disponível</p>
-                                <p class="text-2xl font-bold">R$ 45.200,00</p>
-                            </div>
-                            
-                            <div class="flex-1 p-4 space-y-4 bg-gray-100 overflow-hidden relative">
-                                
-                                <div class="flex gap-2 justify-end">
-                                    <div class="bg-brand-gold text-white p-3 rounded-2xl rounded-tr-none shadow-sm text-xs max-w-[80%]">
-                                        Zé, o pedreiro pediu 50 sacos de cimento pra laje. Tá certo isso?
-                                    </div>
-                                </div>
-
-                                <div class="flex gap-2">
-                                    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Construction%20Worker.png" class="w-8 h-8 rounded-full bg-gray-200/80 border border-gray-300 ze-avatar p-0.5 object-cover">
-                                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-xs text-gray-700 max-w-[80%]">
-                                        Pela metragem que cadastramos, 42 sacos são suficientes. Se comprar 50, vai sobrar e estragar. 
-                                        <br><br>
-                                        <strong>Economia estimada: R$ 280,00.</strong>
-                                        <br>Quer que eu ajuste a lista de compras?
-                                    </div>
+                                    <p class="text-gray-400 text-xs">Próxima etapa:</p>
+                                    <p class="text-xl font-bold leading-tight">Reboco das Paredes</p>
                                 </div>
                                 
-                                <div class="flex gap-2 justify-end">
-                                    <div class="bg-brand-gold text-white p-3 rounded-2xl rounded-tr-none shadow-sm text-xs max-w-[80%]">
-                                        Nossa, sério? Pode ajustar sim!
+                                <!-- App Content List -->
+                                <div class="flex-1 p-4 bg-gray-100 overflow-hidden space-y-3">
+                                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Comprar Agora</p>
+                                            <p class="text-sm font-bold text-gray-800">12 sacos de cimento</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600"><i data-lucide="message-square" class="w-5 h-5"></i></div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Zé da Obra diz:</p>
+                                            <p class="text-xs font-medium text-gray-800">"O preço do pedreiro tá 15% acima da média..."</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3 opacity-70">
+                                        <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-400"><i data-lucide="check" class="w-5 h-5"></i></div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Concluído</p>
+                                            <p class="text-sm font-bold text-gray-400">Levantamento Paredes</p>
+                                        </div>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-brand-dark px-6 py-3 rounded-full text-white text-xs font-bold shadow-lg flex items-center gap-2">
-                                <i data-lucide="mic" class="w-4 h-4 text-brand-gold"></i> Falar com Zé
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-brand-darkCard relative border-y border-white/5">
+    <!-- 2) VOCÊ RECONHECE ISSO? (Dores) -->
+    <section class="py-20 bg-brand-darkCard border-y border-white/5">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-center mb-16">
-                Construir sem gestão é pedir para <span class="text-brand-error">ser enganado.</span>
+            <h2 class="text-2xl md:text-4xl font-display font-bold text-center mb-12 text-white">
+                Se sua obra tá assim… <span class="text-brand-error">você não tá sozinho.</span>
             </h2>
 
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-                <div class="bg-white/5 border border-white/5 p-8 rounded-3xl hover:bg-white/10 transition-colors group">
-                    <div class="w-14 h-14 bg-brand-error/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="trending-up" class="w-8 h-8 text-brand-error"></i>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
+                <!-- Pain 1 -->
+                <div class="bg-white/5 p-6 rounded-2xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="clock" class="w-6 h-6 text-brand-error"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Estouro de Orçamento</h3>
-                    <p class="text-gray-400 leading-relaxed">Pequenos desperdícios diários somam milhares de reais no final. A "caixinha de surpresas" nunca é boa.</p>
-                </div>
-                
-                <div class="bg-white/5 border border-white/5 p-8 rounded-3xl hover:bg-white/10 transition-colors group">
-                    <div class="w-14 h-14 bg-brand-error/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="calendar-off" class="w-8 h-8 text-brand-error"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Obras Eternas</h3>
-                    <p class="text-gray-400 leading-relaxed">Pedreiros que enrolam, materiais que faltam e um cronograma que nunca é cumprido. Sua mudança sempre atrasa.</p>
+                    <p class="text-gray-300 font-medium">Atraso que não acaba</p>
                 </div>
 
-                <div class="bg-white/5 border border-white/5 p-8 rounded-3xl hover:bg-white/10 transition-colors group">
-                    <div class="w-14 h-14 bg-brand-error/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="ghost" class="w-8 h-8 text-brand-error"></i>
+                <!-- Pain 2 -->
+                <div class="bg-white/5 p-6 rounded-2xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="package-x" class="w-6 h-6 text-brand-error"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Desvios e Roubos</h3>
-                    <p class="text-gray-400 leading-relaxed">Sem controle de estoque, você vira refém. Materiais somem e você continua comprando sem saber para onde vai.</p>
+                    <p class="text-gray-300 font-medium">Material comprado errado</p>
                 </div>
-            </div>
-            
-            <div class="text-center">
-                <button onclick="scrollToSection('precos')" class="btn-primary px-8 py-4 rounded-xl text-lg font-bold shadow-2xl hover:scale-105 transition-transform inline-flex items-center gap-2 group">
-                    QUERO ACABAR COM O PREJUÍZO HOJE
-                    <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
-                </button>
+
+                <!-- Pain 3 -->
+                <div class="bg-white/5 p-6 rounded-2xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="help-circle" class="w-6 h-6 text-brand-error"></i>
+                    </div>
+                    <p class="text-gray-300 font-medium">Dúvida e ninguém responde</p>
+                </div>
+
+                <!-- Pain 4 -->
+                <div class="bg-white/5 p-6 rounded-2xl text-center hover:bg-white/10 transition-colors">
+                    <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="wallet" class="w-6 h-6 text-brand-error"></i>
+                    </div>
+                    <p class="text-gray-300 font-medium">Gasto que ninguém explica</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-brand-dark relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-4xl mx-auto mb-16">
+    <!-- 3) SOLUÇÃO PARA LEIGO -->
+    <section id="como-funciona" class="py-24 bg-brand-dark">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6">
-                    Assuma o Controle Total.<br>
-                    <span class="text-brand-gold">Sem dor de cabeça. Sem papelada.</span>
+                    Controle de obra pra quem <br><span class="text-brand-gold">não entende de obra.</span>
                 </h2>
-                <p class="text-gray-400 text-lg">
-                    Tudo o que você precisa em <strong>um clique</strong>. Esqueça planilhas complicadas.
+                <p class="text-xl text-gray-400">
+                    Você vê o que fazer agora, o que vem depois e o que precisa comprar.
+                    <br><strong class="text-white">Simples, passo a passo.</strong>
                 </p>
             </div>
-    
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <div class="glass-panel p-6 rounded-2xl border-brand-gold/10 hover:border-brand-gold/50 transition-colors group">
-                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="calendar-clock" class="w-6 h-6 text-blue-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Sem Atrasos, Sem Chatice</h3>
-                    <p class="text-sm text-gray-400">Sua obra em dia, sem gráficos difíceis. Saiba exatamente se o pedreiro está enrolando ou se o serviço está andando.</p>
-                </div>
-                
-                <div class="glass-panel p-6 rounded-2xl border-brand-gold/10 hover:border-brand-gold/50 transition-colors group">
-                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shopping-cart" class="w-6 h-6 text-green-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Lista de Compras Pronta</h3>
-                    <p class="text-sm text-gray-400">O app monta a lista do que falta na obra. Você só encaminha no WhatsApp do depósito. Zero desperdício.</p>
-                </div>
-    
-                <div class="glass-panel p-6 rounded-2xl border-brand-gold/10 hover:border-brand-gold/50 transition-colors group">
-                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="pie-chart" class="w-6 h-6 text-purple-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Controle de Cada Centavo</h3>
-                    <p class="text-sm text-gray-400">Tenha o controle específico de cada gasto. Organize lançamentos por etapa da obra, material e mão de obra. Saiba exatamente para onde seu dinheiro foi.</p>
-                </div>
-    
-                <div class="glass-panel p-6 rounded-2xl border-brand-gold/10 hover:border-brand-gold/50 transition-colors group">
-                    <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="folder-heart" class="w-6 h-6 text-pink-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Adeus Papelada</h3>
-                    <p class="text-sm text-gray-400">Projetos, recibos e contratos guardados no seu bolso. Nunca mais perca aquele papel importante da obra.</p>
-                </div>
-            </div>
 
-            <div class="text-center">
-                <button onclick="scrollToSection('precos')" class="btn-secondary px-8 py-3 rounded-full font-bold uppercase tracking-wide inline-flex items-center gap-2 group">
-                    QUERO TER O CONTROLE DA MINHA OBRA
-                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                </button>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-blue-500">
+                    <h3 class="text-xl font-bold text-white mb-2">Etapas Claras</h3>
+                    <p class="text-sm text-gray-400">O app te diz: "Agora é hora de levantar parede". Sem mistério.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-green-500">
+                    <h3 class="text-xl font-bold text-white mb-2">Materiais Certos</h3>
+                    <p class="text-sm text-gray-400">Lista pronta do que comprar para aquela etapa. Nem a mais, nem a menos.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-brand-gold">
+                    <h3 class="text-xl font-bold text-white mb-2">Gastos Organizados</h3>
+                    <p class="text-sm text-gray-400">Saiba exatamente para onde foi cada centavo do seu bolso.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="funciona" class="py-24 relative overflow-hidden bg-brand-darkCard">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-16 max-w-6xl mx-auto">
-                <div class="flex-1">
-                    <div class="inline-block px-4 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold font-bold text-xs uppercase tracking-widest mb-6">
-                        Diferencial Exclusivo
+    <!-- 4) PROVA REAL (TELAS DO APP) -->
+    <section class="py-20 bg-gray-900 border-y border-white/5 overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-white mb-2">Veja como é simples por dentro</h2>
+            <p class="text-sm text-gray-500 mb-10">Feito pra ser entendido em 1 minuto.</p>
+
+            <!-- Grid de "Telas" (Simuladas) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                
+                <!-- Screen 1: Visão Geral -->
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                    <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4">
+                        <div class="bg-brand-dark h-12 w-full flex items-center justify-center text-white text-[10px] font-bold">MAPA DA OBRA</div>
+                        <div class="p-4 flex flex-col gap-2">
+                             <div class="h-20 bg-green-100 rounded-lg w-full flex items-center justify-center text-green-700 text-xs font-bold">Fundação (OK)</div>
+                             <div class="h-20 bg-blue-100 rounded-lg w-full flex items-center justify-center text-blue-700 text-xs font-bold border-2 border-blue-500">Paredes (Em Andamento)</div>
+                             <div class="h-20 bg-gray-200 rounded-lg w-full flex items-center justify-center text-gray-400 text-xs">Telhado (Aguardando)</div>
+                        </div>
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Conheça o Zé da Obra <br><span class="text-brand-gold">Sua IA 24 horas.</span></h2>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                        Além de todas as ferramentas de gestão, você tem um <strong>Engenheiro Digital</strong> no bolso. O Zé analisa seus orçamentos, tira dúvidas técnicas na hora e impede que você seja enganado por orçamentos abusivos.
+                    <p class="text-white text-sm font-bold">Visão Geral</p>
+                </div>
+
+                <!-- Screen 2: Materiais -->
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                    <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4">
+                        <div class="bg-brand-dark h-12 w-full flex items-center justify-center text-white text-[10px] font-bold">LISTA DE COMPRAS</div>
+                        <div class="p-4 space-y-2">
+                            <div class="flex gap-2 items-center border-b pb-2"><div class="w-4 h-4 border border-gray-400 rounded"></div><div class="h-2 bg-gray-300 w-2/3 rounded"></div></div>
+                            <div class="flex gap-2 items-center border-b pb-2"><div class="w-4 h-4 border border-gray-400 rounded"></div><div class="h-2 bg-gray-300 w-1/2 rounded"></div></div>
+                            <div class="flex gap-2 items-center border-b pb-2"><div class="w-4 h-4 border border-gray-400 rounded"></div><div class="h-2 bg-gray-300 w-3/4 rounded"></div></div>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-brand-gold p-2 rounded-full"><i data-lucide="share" class="w-4 h-4 text-white"></i></div>
+                    </div>
+                    <p class="text-white text-sm font-bold">O que comprar</p>
+                </div>
+
+                <!-- Screen 3: Zé -->
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                    <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4">
+                        <div class="bg-brand-dark h-12 w-full flex items-center justify-center text-white text-[10px] font-bold">CONVERSA COM ZÉ</div>
+                        <div class="p-2 space-y-2 mt-4">
+                            <div class="bg-brand-gold text-white p-2 rounded-lg text-[10px] self-end ml-auto max-w-[80%]">Quantos tijolos eu compro?</div>
+                            <div class="bg-white text-gray-800 p-2 rounded-lg text-[10px] mr-auto max-w-[80%] border">Pra essa parede de 10m², você vai precisar de 250 tijolos.</div>
+                        </div>
+                    </div>
+                    <p class="text-white text-sm font-bold">Tirar dúvida</p>
+                </div>
+
+                <!-- Screen 4: Financeiro -->
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                    <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4 flex items-center justify-center">
+                        <div class="bg-brand-dark h-12 w-full absolute top-0 flex items-center justify-center text-white text-[10px] font-bold">GASTOS</div>
+                         <div class="w-20 h-20 rounded-full border-8 border-brand-gold border-t-transparent"></div>
+                         <div class="absolute mt-24 text-[10px] font-bold text-gray-600">60% do Orçamento</div>
+                    </div>
+                    <p class="text-white text-sm font-bold">Controle Financeiro</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) ZÉ DA OBRA (HUMANIZADO) -->
+    <section id="ze-da-obra" class="py-24 relative overflow-hidden bg-brand-darkCard">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
+                
+                <!-- Visual (Avatar Grande) -->
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-gold blur-[60px] opacity-30"></div>
+                        <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Construction%20Worker.png" class="w-48 h-48 md:w-64 md:h-64 object-contain relative z-10 animate-float">
+                    </div>
+                </div>
+
+                <!-- Copy -->
+                <div class="flex-1 text-center md:text-left">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 text-white">Bateu dúvida? <br><span class="text-brand-gold">Pergunta pro Zé.</span></h2>
+                    <p class="text-gray-400 text-lg mb-8">
+                        É como ter alguém experiente do seu lado na obra 24 horas por dia: explica, orienta e te ajuda a evitar erro bobo.
                     </p>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-4">
-                            <div class="w-8 h-8 rounded-full bg-brand-accent/20 flex items-center justify-center"><i data-lucide="shield-check" class="w-5 h-5 text-brand-accent"></i></div>
-                            <span class="text-white font-medium">Validação de Orçamentos (Anti-Exploração)</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <div class="w-8 h-8 rounded-full bg-brand-accent/20 flex items-center justify-center"><i data-lucide="calculator" class="w-5 h-5 text-brand-accent"></i></div>
-                            <span class="text-white font-medium">Cálculo de Materiais em Segundos</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <div class="w-8 h-8 rounded-full bg-brand-accent/20 flex items-center justify-center"><i data-lucide="message-square" class="w-5 h-5 text-brand-accent"></i></div>
-                            <span class="text-white font-medium">Tira-dúvidas técnico (ex: traço de concreto)</span>
-                        </li>
-                    </ul>
-
-                    <button onclick="scrollToSection('precos')" class="btn-primary px-6 py-3 rounded-lg text-sm font-bold shadow-lg flex items-center gap-2 group">
-                        VER PLANOS DISPONÍVEIS <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-                </div>
-
-                <div class="flex-1 relative">
-                    <div class="absolute inset-0 bg-brand-gold blur-[100px] opacity-20"></div>
-                    <div class="glass-panel p-8 rounded-3xl relative border-brand-gold/20 border z-10 pt-16">
-                        
-                        <div class="absolute -top-6 right-0 bg-brand-gold text-white text-xs p-3 rounded-lg rounded-br-none shadow-lg transform rotate-2 max-w-[220px] z-20 font-bold">
-                            "Zé, esse orçamento do eletricista tá justo?"
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-white/5 p-4 rounded-xl rounded-bl-none text-left border border-white/10 inline-block max-w-md">
+                            <p class="text-brand-gold text-xs font-bold mb-1">VOCÊ PERGUNTA:</p>
+                            <p class="text-white text-sm">"Zé, o pedreiro pediu R$ 100 no metro do piso. Tá caro?"</p>
                         </div>
-
-                        <div class="flex items-start gap-6">
-                            <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Construction%20Worker.png" class="w-20 h-20 rounded-full border-2 border-brand-gold ze-avatar bg-brand-dark/50 p-1 object-contain">
-                            <div class="flex-1">
-                                <div class="bg-white/5 p-4 rounded-xl rounded-tl-none border border-white/10 mb-4">
-                                    <p class="text-sm text-gray-300 italic">"Analisei aqui. Ele cobrou R$ 45,00 no metro do fio que achei por R$ 12,00 na loja da esquina. Se você comprar o material, economiza R$ 890,00."</p>
-                                </div>
-                                <div class="flex gap-2">
-                                    <span class="px-3 py-1 rounded bg-brand-accent/20 text-brand-accent text-xs font-bold">Economia: R$ 890,00</span>
-                                    <span class="px-3 py-1 rounded bg-blue-500/20 text-blue-400 text-xs font-bold">Tempo: Instantâneo</span>
-                                </div>
-                            </div>
+                        <br>
+                        <div class="bg-brand-gold/10 p-4 rounded-xl rounded-br-none text-left border border-brand-gold/30 inline-block max-w-md">
+                            <p class="text-brand-gold text-xs font-bold mb-1">O ZÉ RESPONDE:</p>
+                            <p class="text-gray-200 text-sm">"Tá bem acima da média da sua região, que é R$ 60. Tenta negociar ou busca outro orçamento. Você economizaria uns R$ 2.000 nessa área."</p>
                         </div>
                     </div>
+
+                    <a href="#precos" class="text-brand-gold font-bold hover:underline flex items-center justify-center md:justify-start gap-2">
+                        Ver planos com o Zé incluído <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-brand-dark relative">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="text-brand-gold font-bold tracking-widest uppercase text-sm">Presente Especial</span>
-                <h2 class="text-3xl md:text-4xl font-display font-bold text-white mt-2">
-                    Leve <span class="text-red-500 line-through decoration-white/30 text-2xl md:text-3xl mx-2">R$ 897</span> <span class="text-white">em Bônus</span> <span class="text-brand-gold ml-2">DE GRAÇA</span>
-                </h2>
-                <p class="text-gray-400 mt-4">Disponível apenas no plano Vitalício. Ferramentas essenciais para blindar sua obra.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="bg-white/5 p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-colors">
-                    <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4">
-                        <i data-lucide="calculator" class="w-5 h-5 text-brand-gold"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Calculadora Automática</h3>
-                    <p class="text-sm text-gray-400">Nunca mais sobe tijolo ou falta cimento. Saiba a quantidade exata de materiais em segundos.</p>
-                </div>
-
-                <div class="bg-white/5 p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-colors">
-                    <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4">
-                        <i data-lucide="file-text" class="w-5 h-5 text-brand-gold"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Pacote de Contratos</h3>
-                    <p class="text-sm text-gray-400">Modelos jurídicos prontos para fechar com pedreiros, eletricistas e pintores com segurança.</p>
-                </div>
-
-                <div class="bg-white/5 p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-colors">
-                    <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4">
-                        <i data-lucide="clipboard-check" class="w-5 h-5 text-brand-gold"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Checklist Anti-Dor-de-Cabeça</h3>
-                    <p class="text-sm text-gray-400">+60 itens para conferir na entrega da obra. Caimento de água, tomadas, infiltrações e mais.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="depoimentos" class="py-24 bg-black relative border-y border-white/5">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-5xl font-display font-bold text-center mb-16 text-white">
-                Eles confiaram e <span class="text-brand-gold">Zeraram a Obra.</span>
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-brand-darkCard p-8 rounded-3xl border border-white/10 relative hover:border-brand-gold/30 transition-colors">
-                    <div class="flex gap-1 text-brand-gold mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic leading-relaxed">"Eu não entendo nada de obra. O app me disse exatamente quanto piso comprar. O pedreiro pediu 10 caixas a mais, o app disse que não precisava. Confiei no app e sobrou dinheiro!"</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white border border-white/20">RM</div>
-                        <div>
-                            <p class="text-white font-bold">Ricardo M.</p>
-                            <p class="text-xs text-gray-500">Reforma de Apartamento</p>
-                        </div>
-                    </div>
-                </div>
-    
-                 <div class="bg-brand-darkCard p-8 rounded-3xl border border-brand-gold/30 relative shadow-[0_0_30px_rgba(217,119,6,0.1)] transform md:-translate-y-4">
-                    <div class="absolute -top-4 right-8 bg-green-500 text-brand-dark text-xs font-bold px-3 py-1 rounded-full shadow-lg">Economizou R$ 12.000</div>
-                    <div class="flex gap-1 text-brand-gold mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic leading-relaxed">"O Zé da Obra é surreal. Mandei a foto do orçamento da loja e ele achou preços 30% menores na minha região em segundos. Pagou a assinatura vitalícia no primeiro dia."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white border border-white/20">AL</div>
-                        <div>
-                            <p class="text-white font-bold">Ana Luiza</p>
-                            <p class="text-xs text-gray-500">Construção Casa Térrea</p>
-                        </div>
-                    </div>
-                </div>
-    
-                 <div class="bg-brand-darkCard p-8 rounded-3xl border border-white/10 relative hover:border-brand-gold/30 transition-colors">
-                    <div class="flex gap-1 text-brand-gold mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                    </div>
-                    <p class="text-gray-300 mb-6 italic leading-relaxed">"A melhor parte é centralizar tudo. Antes eu perdia notas fiscais, não sabia quem tinha pago. Agora tenho controle total financeiro e de cronograma. Obra sem atraso existe!"</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white border border-white/20">CJ</div>
-                        <div>
-                            <p class="text-white font-bold">Carlos Jr.</p>
-                            <p class="text-xs text-gray-500">Pequeno Construtor</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                 <button onclick="scrollToSection('precos')" class="btn-primary px-8 py-4 rounded-xl text-lg font-bold shadow-2xl hover:scale-105 transition-transform inline-flex items-center gap-2 group mb-4">
-                    QUERO TER ESSES RESULTADOS
-                    <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
-                </button>
-                <p class="text-gray-500 text-sm">Mais de 15.000 clientes satisfeitos em todo o Brasil.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-white text-brand-dark">
+    <!-- 6) RESULTADOS LÓGICOS -->
+    <section class="py-20 bg-brand-dark">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Zero Curva de Aprendizado.</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-16">
-                Não sabe mexer em planilhas? Odeia sistemas complicados? Não tem problema.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-                <div class="flex flex-col items-center p-8 bg-gray-50 rounded-3xl border border-gray-200">
-                    <div class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center mb-6 text-white shadow-lg">
-                        <i data-lucide="message-circle" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Você sabe usar o WhatsApp?</h3>
-                    <p class="text-gray-500">Enviar mensagens, áudios e fotos.</p>
+            <h2 class="text-2xl font-bold text-white mb-12">O que muda quando você controla a obra</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="p-6">
+                    <h3 class="text-4xl font-bold text-white mb-2">Menos</h3>
+                    <p class="text-xl text-brand-error font-medium">Atraso e Dor de Cabeça</p>
                 </div>
-
-                <div class="hidden md:flex justify-center absolute left-1/2 -translate-x-1/2">
-                    <div class="w-12 h-12 bg-brand-dark text-white rounded-full flex items-center justify-center font-bold text-xl shadow-xl">=</div>
+                <div class="p-6 border-y md:border-y-0 md:border-x border-white/10">
+                    <h3 class="text-4xl font-bold text-white mb-2">Menos</h3>
+                    <p class="text-xl text-brand-error font-medium">Desperdício de Material</p>
                 </div>
-
-                <div class="flex flex-col items-center p-8 bg-brand-gold/10 rounded-3xl border border-brand-gold/30 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-brand-gold/5 pointer-events-none animate-pulse-slow"></div>
-                    <div class="w-16 h-16 bg-brand-gold rounded-full flex items-center justify-center mb-6 text-white shadow-lg z-10">
-                        <i data-lucide="check" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2 z-10 text-brand-dark">Você sabe usar o Mãos da Obra</h3>
-                    <p class="text-gray-600 z-10">Converse com o app como se fosse um amigo.</p>
+                <div class="p-6">
+                    <h3 class="text-4xl font-bold text-white mb-2">Mais</h3>
+                    <p class="text-xl text-green-400 font-medium">Dinheiro no seu Bolso</p>
                 </div>
             </div>
-            
-            <p class="mt-12 text-gray-500 font-medium">Basta abrir o app e falar: "Zé, quanto cimento preciso pra 30 metros de piso?"</p>
+
+            <p class="mt-12 text-gray-500 font-display font-bold text-lg uppercase tracking-widest">Errar na obra custa caro.</p>
         </div>
     </section>
 
+    <!-- 7) COMPARAÇÃO DE VALOR (ANCORAGEM) -->
+    <section class="py-24 bg-brand-gold text-brand-dark overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/concrete-wall.png')] opacity-10"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-xl font-bold uppercase tracking-widest mb-4 opacity-80">E o custo?</h2>
+            <p class="text-3xl md:text-5xl font-display font-bold max-w-4xl mx-auto leading-tight">
+                Resolver tudo isso custa menos do que <span class="bg-brand-dark text-brand-gold px-2">um saco de cimento.</span>
+            </p>
+            <p class="mt-6 text-lg font-medium opacity-80">Você gasta muito mais tentando consertar o que deu errado.</p>
+        </div>
+    </section>
+
+    <!-- 8) AGORA SIM: OFERTA E PLANOS -->
     <section id="precos" class="py-24 bg-brand-dark relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(217,119,6,0.15),transparent_70%)]"></div>
-        
         <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">Quanto vale a sua <br><span class="text-brand-gold">Paz de Espírito?</span></h2>
-                <p class="text-gray-400 text-lg">Um erro na obra custa R$ 2.000. O app custa uma fração disso. A conta fecha.</p>
+            
+            <!-- Branding Forte -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-3 justify-center mb-4">
+                    <div class="w-12 h-12 bg-brand-gold rounded-xl flex items-center justify-center">
+                        <i data-lucide="hard-hat" class="text-white w-6 h-6"></i>
+                    </div>
+                    <span class="font-display font-bold text-3xl text-white">MÃOS DA OBRA</span>
+                </div>
+                <h2 class="text-xl text-gray-400">A sua obra na palma da sua mão.</h2>
             </div>
 
+            <!-- Pricing Grid -->
             <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-center">
                 
+                <!-- PLANO MENSAL -->
                 <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity">
                     <h3 class="text-lg font-medium text-gray-300">Mensal</h3>
                     <div class="my-4">
                         <span class="text-3xl font-bold text-white">R$ 29,90</span><span class="text-gray-500">/mês</span>
                     </div>
                     <p class="text-sm text-gray-500 mb-8">Para pequenas reformas rápidas.</p>
-                    
-                    <a href="https://maos-da-obra-2-0.vercel.app/register?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold">Escolher Mensal</a>
-                    
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold">
+                        Começar Agora
+                    </a>
                     <div class="mt-6 space-y-3">
                         <p class="text-sm text-gray-400 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> Gestão Básica</p>
                         <p class="text-sm text-gray-400 flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> Sem IA Zé da Obra</p>
-                        <p class="text-sm text-gray-400 flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> Sem Suporte Prioritário</p>
                     </div>
                 </div>
 
+                <!-- PLANO SEMESTRAL -->
                 <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity">
                     <h3 class="text-lg font-medium text-gray-300">Semestral</h3>
                     <div class="my-4">
                         <span class="text-3xl font-bold text-white">R$ 97,00</span><span class="text-gray-500">/total</span>
                     </div>
                     <p class="text-sm text-gray-500 mb-8">Para obras de médio porte.</p>
-                    
-                    <a href="https://maos-da-obra-2-0.vercel.app/register?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold">Escolher Semestral</a>
-                    
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold">
+                        Começar Agora
+                    </a>
                     <div class="mt-6 space-y-3">
                         <p class="text-sm text-gray-400 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-gray-500"></i> Gestão Completa</p>
                         <p class="text-sm text-gray-400 flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> Sem IA Zé da Obra</p>
-                        <p class="text-sm text-gray-400 flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> Sem Suporte Prioritário</p>
                     </div>
                 </div>
 
+                <!-- PLANO VITALÍCIO (Hero) -->
                 <div class="bg-gradient-to-b from-gray-900 to-black rounded-[2rem] p-8 border-2 border-brand-gold shadow-[0_0_50px_rgba(217,119,6,0.3)] relative transform md:scale-110 z-20">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-dark px-6 py-2 rounded-full font-bold text-sm shadow-lg tracking-wider uppercase flex items-center gap-2 whitespace-nowrap">
                         <i data-lucide="crown" class="w-4 h-4 fill-brand-dark"></i> Oferta Limitada
@@ -649,61 +555,151 @@
                         </div>
                     </div>
 
-                    <a href="https://maos-da-obra-2-0.vercel.app/register?plan=vitalicio" class="btn-primary w-full py-5 rounded-xl text-lg shadow-xl mb-4 flex items-center justify-center gap-2 animate-pulse-slow">
-                        GARANTIR OFERTA AGORA
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=vitalicio" class="btn-primary w-full py-5 rounded-xl text-lg shadow-xl mb-4 flex items-center justify-center gap-2 animate-pulse-slow">
+                        Quero destravar o controle
                         <i data-lucide="lock" class="w-5 h-5"></i>
                     </a>
                     
-                    <p class="text-center text-xs text-gray-500">Acesso imediato enviado por e-mail.</p>
+                    <div class="text-center space-y-2">
+                        <p class="text-xs text-gray-500 flex items-center justify-center gap-1"><i data-lucide="smartphone" class="w-3 h-3"></i> Funciona no celular</p>
+                        <p class="text-xs text-gray-500 flex items-center justify-center gap-1"><i data-lucide="zap" class="w-3 h-3"></i> Acesso imediato</p>
+                    </div>
                 </div>
-
             </div>
             
+            <!-- Garantia -->
             <div class="max-w-2xl mx-auto mt-20 bg-white/5 rounded-2xl p-6 border border-white/10 flex items-center gap-6">
-                <div class="w-20 h-20 bg-brand-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <i data-lucide="shield-check" class="w-10 h-10 text-brand-gold"></i>
+                <div class="w-16 h-16 bg-brand-gold/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-brand-gold"></i>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-1">Risco Zero: Garantia de 30 Dias</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed">Se você não economizar pelo menos o valor que pagou no app no primeiro mês, nós devolvemos 100% do seu dinheiro. Sem perguntas.</p>
-                </div>
-            </div>
-
-            <div class="max-w-4xl mx-auto mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-8 opacity-70">
-                <div class="flex flex-col items-center md:items-start gap-2">
-                    <span class="text-xs text-gray-400 uppercase tracking-widest font-bold">Formas de Pagamento</span>
-                    <div class="flex items-center gap-3">
-                        <div class="bg-white/10 px-3 py-1.5 rounded flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4 text-white"></i> <span class="text-xs text-white font-bold">Até 12x</span></div>
-                        <div class="bg-white/10 px-3 py-1.5 rounded flex items-center gap-2"><i data-lucide="qr-code" class="w-4 h-4 text-white"></i> <span class="text-xs text-white font-bold">Pix</span></div>
-                    </div>
-                    <div class="flex gap-2 mt-2">
-                         <div class="w-8 h-5 bg-white rounded flex items-center justify-center"><span class="text-[6px] font-bold text-blue-900">VISA</span></div>
-                         <div class="w-8 h-5 bg-white rounded flex items-center justify-center"><span class="text-[6px] font-bold text-red-600">Master</span></div>
-                         <div class="w-8 h-5 bg-white rounded flex items-center justify-center"><span class="text-[6px] font-bold text-blue-500">Elo</span></div>
-                         <div class="w-8 h-5 bg-white rounded flex items-center justify-center"><span class="text-[6px] font-bold text-red-500">Hiper</span></div>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col items-center md:items-end gap-2">
-                    <span class="text-xs text-gray-400 uppercase tracking-widest font-bold">Compra Blindada</span>
-                    <div class="flex items-center gap-4">
-                         <div class="flex items-center gap-2 text-green-500 bg-green-500/10 px-3 py-1.5 rounded-full border border-green-500/20">
-                             <i data-lucide="lock" class="w-3 h-3"></i>
-                             <span class="text-[10px] font-bold uppercase">Dados Criptografados</span>
-                         </div>
-                         <div class="flex items-center gap-2 text-green-500 bg-green-500/10 px-3 py-1.5 rounded-full border border-green-500/20">
-                             <i data-lucide="shield-check" class="w-3 h-3"></i>
-                             <span class="text-[10px] font-bold uppercase">Site Seguro</span>
-                         </div>
-                    </div>
+                    <h4 class="text-white font-bold text-lg mb-1">Garantia Blindada de 30 Dias</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Se não economizar pelo menos o valor que pagou no app no primeiro mês, devolvemos 100% do seu dinheiro. Sem perguntas.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <footer class="bg-black py-12 border-t border-white/10 text-sm">
+    <!-- 9) DEPOIMENTOS (ANTES E DEPOIS) -->
+    <section id="depoimentos" class="py-24 bg-brand-darkCard border-y border-white/5">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-4xl font-display font-bold text-center mb-16 text-white">
+                Quem usa diz:
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-brand-dark p-8 rounded-3xl border border-white/10 relative">
+                    <p class="text-brand-error text-xs font-bold uppercase mb-2">ANTES:</p>
+                    <p class="text-gray-500 text-sm italic mb-4">"Eu tava perdida, comprava coisa errada e o pedreiro ficava parado..."</p>
+                    <div class="h-px bg-white/10 w-full mb-4"></div>
+                    <p class="text-green-400 text-xs font-bold uppercase mb-2">AGORA:</p>
+                    <p class="text-gray-300 italic mb-6">"O app me disse exatamente quanto piso comprar. Sobrou dinheiro pra pintar a sala!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white text-xs">RM</div>
+                        <p class="text-white font-bold text-sm">Ricardo M.</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-brand-dark p-8 rounded-3xl border border-brand-gold/30 relative shadow-lg">
+                    <p class="text-brand-error text-xs font-bold uppercase mb-2">ANTES:</p>
+                    <p class="text-gray-500 text-sm italic mb-4">"Achava que ia gastar X, gastei 2X. Fui enganada nos preços..."</p>
+                    <div class="h-px bg-white/10 w-full mb-4"></div>
+                    <p class="text-green-400 text-xs font-bold uppercase mb-2">AGORA:</p>
+                    <p class="text-gray-300 italic mb-6">"O Zé achou preços 30% menores na minha região. Pagou a assinatura no primeiro dia."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white text-xs">AL</div>
+                        <p class="text-white font-bold text-sm">Ana Luiza</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-brand-dark p-8 rounded-3xl border border-white/10 relative">
+                    <p class="text-brand-error text-xs font-bold uppercase mb-2">ANTES:</p>
+                    <p class="text-gray-500 text-sm italic mb-4">"Papelada sumia, eu não sabia o que tinha pago..."</p>
+                    <div class="h-px bg-white/10 w-full mb-4"></div>
+                    <p class="text-green-400 text-xs font-bold uppercase mb-2">AGORA:</p>
+                    <p class="text-gray-300 italic mb-6">"Tenho o controle total financeiro. Obra sem atraso existe!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white text-xs">CJ</div>
+                        <p class="text-white font-bold text-sm">Carlos Jr.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10) FAQ (OBJEÇÕES) -->
+    <section class="py-20 bg-brand-dark">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-2xl font-bold text-white mb-8 text-center">Dúvidas Comuns</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 text-white font-medium">
+                        Eu preciso entender de obra pra usar?
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-brand-gold"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-400 text-sm">
+                        Não! O app foi feito justamente para quem não entende. Ele te guia passo a passo e traduz os termos difíceis.
+                    </div>
+                </details>
+
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 text-white font-medium">
+                        Isso serve pra casa grande e pequena?
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-brand-gold"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-400 text-sm">
+                        Sim, serve para desde pequenas reformas de banheiro até a construção de uma casa inteira do zero.
+                    </div>
+                </details>
+
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 text-white font-medium">
+                        O Zé da Obra responde que tipo de dúvida?
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-brand-gold"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-400 text-sm">
+                        Qualquer dúvida sobre materiais, preços, procedimentos e orçamentos. É como ter um consultor experiente no bolso.
+                    </div>
+                </details>
+                
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 text-white font-medium">
+                        Isso substitui um engenheiro?
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-brand-gold"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-400 text-sm">
+                        Não substitui a responsabilidade técnica, mas ajuda você (o dono) a se organizar, cobrar prazos e não ser enganado nos preços.
+                    </div>
+                </details>
+
+                <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-colors">
+                    <summary class="flex cursor-pointer items-center justify-between p-4 text-white font-medium">
+                        Como acesso depois de comprar?
+                        <i data-lucide="chevron-down" class="w-5 h-5 group-open:rotate-180 transition-transform text-brand-gold"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-gray-400 text-sm">
+                        Você recebe um e-mail imediatamente com seu login e senha. Funciona no celular e no computador.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black pt-12 pb-8 border-t border-white/10 text-sm">
         <div class="container mx-auto px-4 text-center">
+            
+            <!-- Pre-Footer CTA -->
+            <div class="mb-12">
+                <h3 class="text-white text-lg font-bold mb-4">Calma. Agora dá pra controlar.</h3>
+                <button onclick="scrollToSection('precos')" class="btn-primary px-8 py-3 rounded-full font-bold">Começar Agora</button>
+            </div>
+
             <div class="flex items-center justify-center gap-3 mb-8 opacity-70">
                 <div class="w-8 h-8 bg-brand-gold rounded-lg logo-tilt flex items-center justify-center">
                     <i data-lucide="hard-hat" class="w-4 h-4 text-white"></i>
@@ -711,7 +707,7 @@
                 <span class="font-bold text-white tracking-widest">MÃOS DA OBRA</span>
             </div>
             
-            <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto text-gray-500 mb-12 text-left md:text-center">
+            <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto text-gray-500 mb-8 text-left md:text-center">
                 <a href="#" class="hover:text-brand-gold transition-colors">Termos de Uso</a>
                 <a href="#" class="hover:text-brand-gold transition-colors">Política de Privacidade</a>
                 <a href="#" class="hover:text-brand-gold transition-colors">Central de Ajuda</a>
@@ -719,10 +715,10 @@
             </div>
 
             <p class="text-gray-600">&copy; <span id="year"></span> Mãos da Obra Tecnologia. Todos os direitos reservados.</p>
-            <p class="text-gray-700 text-xs mt-2">CNPJ: 00.000.000/0001-00 - São Paulo, SP</p>
         </div>
     </footer>
 
+    <!-- MOBILE STICKY CTA -->
     <div class="md:hidden fixed bottom-0 w-full bg-brand-darkCard border-t border-white/10 p-4 z-50 flex items-center justify-between shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
         <div>
             <p class="text-white font-bold text-lg">A partir de <span class="text-brand-gold">R$ 29,90</span></p>
@@ -732,8 +728,10 @@
         </button>
     </div>
 
+    <!-- CHAT WIDGET -->
     <div id="chat-widget-container"></div>
 
+    <!-- SCRIPTS -->
     <script>
         const ZE_IMAGE_SRC = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Construction%20Worker.png";
         const ZE_FALLBACK_URL = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Construction%20Worker.png";
