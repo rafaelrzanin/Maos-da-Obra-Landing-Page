@@ -35,7 +35,7 @@
                 dark: '#020617',       // Slate 950 (Fundo Principal)
                 darkCard: '#0F172A',   // Slate 900 (Cards)
                 accent: '#10B981',     // Verde Sucesso
-                error: '#EF4444',      // Vermelho Erro
+                error: '#DC2626',      // Vermelho Queimado (Mais sério)
               }
             },
             animation: {
@@ -43,6 +43,7 @@
               'float': 'float 6s ease-in-out infinite',
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'shine': 'shine 2s linear infinite',
+              'stamp-impact': 'stampImpact 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards',
             },
             keyframes: {
               fadeInUp: {
@@ -56,6 +57,12 @@
               shine: {
                 '0%': { backgroundPosition: '200% center' },
                 '100%': { backgroundPosition: '-200% center' },
+              },
+              stampImpact: {
+                '0%': { opacity: '0', transform: 'scale(3) rotate(-3deg)' },
+                '50%': { opacity: '1', transform: 'scale(0.8) rotate(-3deg)' },
+                '70%': { transform: 'scale(1.1) rotate(-3deg)' },
+                '100%': { transform: 'scale(1) rotate(-3deg)' },
               }
             },
             backgroundImage: {
@@ -139,22 +146,29 @@
         transform: rotate(6deg);
       }
 
-      /* Carimbo "Xiii Deu Ruim" - Realista */
+      /* Carimbo "Xiii Deu Ruim" - Realista e Sujo */
       .stamp-real {
-        color: #ef4444; /* Vermelho Erro */
-        border: 3px solid #ef4444;
-        padding: 0.5rem 1rem;
+        color: #DC2626; /* Vermelho Queimado */
+        border: 4px solid #DC2626;
+        padding: 0.5rem 1.5rem;
         font-family: 'Space Grotesk', sans-serif;
-        font-weight: 800;
+        font-weight: 900;
         text-transform: uppercase;
         display: inline-block;
-        transform: rotate(-3deg);
         letter-spacing: 0.1em;
-        opacity: 0.9;
-        mask-image: url("data:image/svg+xml;utf8,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noise)' opacity='0.5'/></svg>"); 
-        /* Fallback simples de borda caso mask não funcione bem em todos browsers, a cor e borda já dão o efeito */
+        /* Noise Texture para efeito de desgaste */
+        background-image: url("data:image/svg+xml;utf8,<svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noise)' opacity='0.2'/></svg>");
         border-radius: 4px;
-        background-color: rgba(239, 68, 68, 0.05);
+        box-shadow: inset 0 0 0 2px rgba(220, 38, 38, 0.2);
+        opacity: 0; /* Inicia invisível para animação */
+      }
+
+      /* Floating Cards Animation in Hero */
+      .floating-card-1 {
+        animation: float 5s ease-in-out infinite;
+      }
+      .floating-card-2 {
+        animation: float 7s ease-in-out infinite reverse;
       }
     </style>
 </head>
@@ -184,23 +198,23 @@
         </div>
     </header>
 
-    <!-- 1) HERO SECTION - Acolhimento + Promessa Simples -->
-    <section class="relative pt-32 pb-12 md:pt-40 md:pb-24 overflow-hidden">
+    <!-- 1) HERO SECTION - Compacta, Dinâmica e Direta -->
+    <section class="relative pt-24 pb-8 md:pt-32 md:pb-16 overflow-hidden">
         <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
         <div class="container mx-auto px-4 relative z-10">
             
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <!-- Text Content (Left/Top) -->
-                <div class="flex-1 text-center md:text-left z-20">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <!-- Text Content (Left) -->
+                <div class="flex-1 text-center md:text-left z-20 pt-4">
                     
-                    <!-- Carimbo "Xiii..." (Visual Realista) -->
-                    <div class="mb-8 animate-fade-in-up">
-                        <div class="stamp-real">
+                    <!-- Carimbo "Xiii..." (Animação de Impacto) -->
+                    <div class="mb-6 h-16 flex items-center justify-center md:justify-start">
+                        <div class="stamp-real animate-stamp-impact">
                             Xiii… aí deu ruim.
                         </div>
                     </div>
 
-                    <h1 class="font-display font-bold text-5xl md:text-7xl leading-[1.1] mb-6 tracking-tight animate-fade-in-up text-white" style="animation-delay: 0.1s">
+                    <h1 class="font-display font-bold text-5xl md:text-7xl leading-[1.0] mb-6 tracking-tight animate-fade-in-up text-white" style="animation-delay: 0.1s">
                         Calma. <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-goldLight to-brand-gold">Não precisa ser assim.</span>
                     </h1>
@@ -221,65 +235,85 @@
                     </div>
                 </div>
 
-                <!-- Visual (Right/Bottom) - Repurposed Phone Mockup (REALISTA) -->
-                <div class="flex-1 w-full max-w-[320px] md:max-w-md mx-auto animate-fade-in-up" style="animation-delay: 0.4s">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-brand-gold/20 blur-2xl rounded-full"></div>
-                        <!-- Phone Mockup -->
-                         <div class="w-full bg-black border-[8px] border-gray-800 rounded-[40px] shadow-2xl relative overflow-hidden aspect-[9/19]">
-                            <div class="absolute top-0 w-full h-full bg-gray-50 flex flex-col">
-                                <!-- App Header -->
-                                <div class="bg-brand-dark p-6 pt-10 text-white pb-6 rounded-b-3xl">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <div class="flex items-center gap-2">
-                                            <!-- DADO REALISTA -->
-                                            <span class="font-bold text-sm">Obra Casa Ricardo - 178m²</span>
-                                        </div>
-                                        <div class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">Em dia</div>
+                <!-- Visual Stack (Right) - Dinâmico para preencher vazio -->
+                <div class="flex-1 w-full max-w-[360px] md:max-w-md mx-auto relative animate-fade-in-up" style="animation-delay: 0.4s">
+                    
+                    <!-- Main Phone -->
+                    <div class="w-[260px] md:w-[280px] bg-black border-[8px] border-gray-800 rounded-[40px] shadow-2xl relative overflow-hidden aspect-[9/19] mx-auto z-10">
+                         <div class="absolute top-0 w-full h-full bg-gray-50 flex flex-col">
+                            <!-- App Header -->
+                            <div class="bg-brand-dark p-6 pt-10 text-white pb-6 rounded-b-3xl">
+                                <div class="flex justify-between items-center mb-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-bold text-xs md:text-sm truncate">Obra Casa Ricardo - 178m²</span>
                                     </div>
-                                    <p class="text-gray-400 text-xs">Etapa atual:</p>
-                                    <p class="text-xl font-bold leading-tight">Paredes – 65% concluído</p>
+                                    <div class="bg-green-500/20 text-green-400 text-[10px] px-2 py-1 rounded">Em dia</div>
                                 </div>
-                                
-                                <!-- App Content List -->
-                                <div class="flex-1 p-4 bg-gray-100 overflow-hidden space-y-3">
-                                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
-                                        <div class="w-full">
-                                            <div class="flex justify-between">
-                                                <p class="text-xs text-gray-500">Ontem</p>
-                                                <p class="text-xs text-red-500 font-bold">- R$ 1.420</p>
-                                            </div>
-                                            <p class="text-sm font-bold text-gray-800">Cimento e Areia</p>
+                                <p class="text-gray-400 text-[10px]">Etapa atual:</p>
+                                <p class="text-lg font-bold leading-tight">Alvenaria – 65%</p>
+                            </div>
+                            
+                            <!-- App Content List -->
+                            <div class="flex-1 p-3 bg-gray-100 overflow-hidden space-y-2">
+                                <div class="bg-white p-2.5 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><i data-lucide="shopping-cart" class="w-4 h-4"></i></div>
+                                    <div class="w-full">
+                                        <div class="flex justify-between">
+                                            <p class="text-[10px] text-gray-500">Ontem</p>
+                                            <p class="text-[10px] text-red-500 font-bold">- R$ 1.420</p>
                                         </div>
+                                        <p class="text-xs font-bold text-gray-800">Cimento e Areia</p>
                                     </div>
-                                    
-                                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 flex-shrink-0"><i data-lucide="message-square" class="w-5 h-5"></i></div>
-                                        <div>
-                                            <p class="text-xs text-gray-500">Zé da Obra diz:</p>
-                                            <p class="text-xs font-medium text-gray-800">"Esse orçamento de elétrica tá R$ 400 acima da média."</p>
-                                        </div>
+                                </div>
+                                <div class="bg-white p-2.5 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3 border-l-4 border-l-brand-gold">
+                                    <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 flex-shrink-0"><i data-lucide="alert-circle" class="w-4 h-4"></i></div>
+                                    <div class="w-full">
+                                        <p class="text-[10px] text-brand-gold font-bold uppercase">Atenção</p>
+                                        <p class="text-xs font-bold text-gray-800">Areia média - Pendente</p>
                                     </div>
-
-                                    <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3 opacity-70">
-                                        <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 flex-shrink-0"><i data-lucide="check" class="w-5 h-5"></i></div>
-                                        <div>
-                                            <p class="text-xs text-gray-500">Concluído 10/out</p>
-                                            <p class="text-sm font-bold text-gray-400">Fundação</p>
-                                        </div>
+                                </div>
+                                <div class="bg-white p-2.5 rounded-xl shadow-sm border border-gray-200 flex items-center gap-3 opacity-60">
+                                    <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 flex-shrink-0"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                    <div>
+                                        <p class="text-[10px] text-gray-500">Concluído 10/out</p>
+                                        <p class="text-xs font-bold text-gray-400">Fundação</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Floating Card 1 (Alert) -->
+                    <div class="absolute top-20 -right-4 md:-right-12 z-20 floating-card-1 w-48">
+                         <div class="bg-brand-darkCard/90 backdrop-blur border border-white/10 p-3 rounded-xl shadow-xl flex items-center gap-3">
+                            <div class="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-red-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase font-bold">Alerta de Preço</p>
+                                <p class="text-white text-xs font-medium">Tijolo 20% mais caro</p>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- Floating Card 2 (Zé Response) -->
+                    <div class="absolute bottom-32 -left-4 md:-left-16 z-20 floating-card-2 w-56">
+                        <div class="bg-white/90 backdrop-blur border border-gray-200 p-3 rounded-xl shadow-xl flex gap-3">
+                           <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Construction%20Worker.png" class="w-8 h-8 rounded-full bg-gray-100 p-0.5 object-cover flex-shrink-0">
+                           <div>
+                               <p class="text-[10px] text-brand-gold uppercase font-bold">Zé da Obra:</p>
+                               <p class="text-gray-800 text-xs font-medium leading-snug">"O preço tá alto. Achei por R$ 28,00 no depósito vizinho."</p>
+                           </div>
+                        </div>
+                   </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 2) VOCÊ RECONHECE ISSO? (Dores) -->
-    <section class="py-20 bg-brand-darkCard border-y border-white/5">
+    <section class="py-16 md:py-20 bg-brand-darkCard border-y border-white/5">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl md:text-4xl font-display font-bold text-center mb-12 text-white">
                 Se sua obra tá assim… <span class="text-brand-error">você não tá sozinho.</span>
@@ -291,7 +325,7 @@
                     <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i data-lucide="clock" class="w-6 h-6 text-brand-error"></i>
                     </div>
-                    <p class="text-gray-300 font-medium">Atraso que não acaba</p>
+                    <p class="text-gray-300 font-medium text-sm md:text-base">Atraso que não acaba</p>
                 </div>
 
                 <!-- Pain 2 -->
@@ -299,7 +333,7 @@
                     <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i data-lucide="package-x" class="w-6 h-6 text-brand-error"></i>
                     </div>
-                    <p class="text-gray-300 font-medium">Material comprado errado</p>
+                    <p class="text-gray-300 font-medium text-sm md:text-base">Material comprado errado</p>
                 </div>
 
                 <!-- Pain 3 -->
@@ -307,7 +341,7 @@
                     <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i data-lucide="help-circle" class="w-6 h-6 text-brand-error"></i>
                     </div>
-                    <p class="text-gray-300 font-medium">Dúvida e ninguém responde</p>
+                    <p class="text-gray-300 font-medium text-sm md:text-base">Dúvida e ninguém responde</p>
                 </div>
 
                 <!-- Pain 4 -->
@@ -315,14 +349,14 @@
                     <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i data-lucide="wallet" class="w-6 h-6 text-brand-error"></i>
                     </div>
-                    <p class="text-gray-300 font-medium">Gasto que ninguém explica</p>
+                    <p class="text-gray-300 font-medium text-sm md:text-base">Gasto que ninguém explica</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 3) SOLUÇÃO PARA LEIGO -->
-    <section id="como-funciona" class="py-24 bg-brand-dark">
+    <section id="como-funciona" class="py-20 md:py-24 bg-brand-dark">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6">
@@ -351,17 +385,17 @@
         </div>
     </section>
 
-    <!-- 4) PROVA REAL (TELAS DO APP - REALISTAS) -->
+    <!-- 4) PROVA REAL (TELAS DO APP - REALISMO FINAL) -->
     <section class="py-20 bg-gray-900 border-y border-white/5 overflow-hidden">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-2xl font-bold text-white mb-2">Veja como é simples por dentro</h2>
             <p class="text-sm text-gray-500 mb-10">Feito pra ser entendido em 1 minuto.</p>
 
-            <!-- Grid de "Telas" (Simuladas) -->
+            <!-- Grid de "Telas" (Simuladas - Dados Reais) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 
                 <!-- Screen 1: Visão Geral -->
-                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center hover:border-brand-gold/20 transition-colors">
                     <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4">
                         <div class="bg-brand-dark h-12 w-full flex items-center justify-center text-white text-[10px] font-bold">MAPA DA OBRA</div>
                         <div class="p-4 flex flex-col gap-2">
@@ -369,9 +403,10 @@
                                  <span>Fundação (100%)</span>
                                  <span class="text-[9px] font-normal">Concluído 15/out</span>
                              </div>
-                             <div class="h-20 bg-blue-100 rounded-lg w-full flex items-center justify-center text-blue-700 text-xs font-bold border-2 border-blue-500 flex-col">
-                                 <span>Paredes (65%)</span>
-                                 <span class="text-[9px] font-normal">Em Andamento</span>
+                             <div class="h-20 bg-blue-100 rounded-lg w-full flex items-center justify-center text-blue-700 text-xs font-bold border-2 border-blue-500 flex-col relative overflow-hidden">
+                                 <span class="z-10">Paredes (65%)</span>
+                                 <span class="text-[9px] font-normal z-10">Em Andamento</span>
+                                 <div class="absolute left-0 top-0 h-full bg-blue-200 w-[65%] opacity-30"></div>
                              </div>
                              <div class="h-20 bg-gray-200 rounded-lg w-full flex items-center justify-center text-gray-400 text-xs">Telhado (Aguardando)</div>
                         </div>
@@ -380,7 +415,7 @@
                 </div>
 
                 <!-- Screen 2: Materiais -->
-                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center hover:border-brand-gold/20 transition-colors">
                     <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4">
                         <div class="bg-brand-dark h-12 w-full flex items-center justify-center text-white text-[10px] font-bold">LISTA DE COMPRAS</div>
                         <div class="p-4 space-y-2">
@@ -392,10 +427,10 @@
                                 </div>
                             </div>
                             <div class="flex gap-2 items-center border-b pb-2">
-                                <div class="w-4 h-4 border border-gray-400 rounded"></div>
+                                <div class="w-4 h-4 border border-red-400 bg-red-100 rounded flex items-center justify-center text-red-500 text-[8px]">!</div>
                                 <div class="w-full">
                                     <p class="text-[10px] font-bold text-gray-800">12m Areia Média</p>
-                                    <p class="text-[9px] text-gray-500">Pendente</p>
+                                    <p class="text-[9px] text-red-500 font-bold">Pendente - Urgente</p>
                                 </div>
                             </div>
                         </div>
@@ -405,19 +440,22 @@
                 </div>
 
                 <!-- Screen 3: Zé -->
-                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center hover:border-brand-gold/20 transition-colors">
                     <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4">
                         <div class="bg-brand-dark h-12 w-full flex items-center justify-center text-white text-[10px] font-bold">CONVERSA COM ZÉ</div>
                         <div class="p-2 space-y-2 mt-4">
                             <div class="bg-brand-gold text-white p-2 rounded-lg text-[10px] self-end ml-auto max-w-[80%]">Quantos tijolos eu compro?</div>
-                            <div class="bg-white text-gray-800 p-2 rounded-lg text-[10px] mr-auto max-w-[80%] border">Pra essa parede de 10m², considerando o tijolo baiano 6 furos, vai precisar de 250 unidades.</div>
+                            <div class="bg-white text-gray-800 p-2 rounded-lg text-[10px] mr-auto max-w-[80%] border">
+                                Pra essa parede de 10m², considerando o tijolo baiano 6 furos, vai precisar de <strong>250 unidades</strong>. <br>
+                                Dica: Compra 260 pra garantir a quebra.
+                            </div>
                         </div>
                     </div>
                     <p class="text-white text-sm font-bold">Tirar dúvida</p>
                 </div>
 
                 <!-- Screen 4: Financeiro -->
-                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center">
+                <div class="bg-brand-darkCard border border-white/10 rounded-2xl p-4 flex flex-col items-center hover:border-brand-gold/20 transition-colors">
                     <div class="w-full aspect-[9/16] bg-gray-100 rounded-lg overflow-hidden relative mb-4 flex items-center justify-center">
                         <div class="bg-brand-dark h-12 w-full absolute top-0 flex items-center justify-center text-white text-[10px] font-bold">MEU DINHEIRO</div>
                          <div class="w-20 h-20 rounded-full border-8 border-brand-gold border-t-transparent"></div>
@@ -533,18 +571,18 @@
             <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
                 
                 <!-- PLANO MENSAL -->
-                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity">
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity flex flex-col h-full">
                     <h3 class="text-lg font-medium text-gray-300">Mensal</h3>
                     <div class="my-4">
                         <span class="text-3xl font-bold text-white">R$ 29,90</span><span class="text-gray-500">/mês</span>
                     </div>
                     <!-- Justificativa -->
-                    <div class="mb-8 text-sm text-green-400 font-medium">
+                    <div class="mb-8 text-sm text-green-400 font-medium bg-green-500/10 p-3 rounded-lg border border-green-500/20">
                         Mais barato que um saco de cimento.<br>
-                        <span class="text-gray-500 text-xs font-normal">Evita erro logo no começo da obra.</span>
+                        <span class="text-gray-400 text-xs font-normal">Evita erro logo no começo da obra.</span>
                     </div>
                     
-                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold">
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
                         Começar Agora
                     </a>
                     <div class="mt-6 space-y-3">
@@ -554,18 +592,18 @@
                 </div>
 
                 <!-- PLANO SEMESTRAL -->
-                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity">
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm opacity-80 hover:opacity-100 transition-opacity flex flex-col h-full">
                     <h3 class="text-lg font-medium text-gray-300">Semestral</h3>
                     <div class="my-4">
                         <span class="text-3xl font-bold text-white">R$ 97,00</span><span class="text-gray-500">/total</span>
                     </div>
                     <!-- Justificativa -->
-                    <div class="mb-8 text-sm text-green-400 font-medium">
-                        O que você economiza em material,<br>
-                        <span class="text-gray-500 text-xs font-normal">paga o plano várias vezes.</span>
+                    <div class="mb-8 text-sm text-green-400 font-medium bg-green-500/10 p-3 rounded-lg border border-green-500/20">
+                        Um erro que você evita,<br>
+                        <span class="text-gray-400 text-xs font-normal">já paga esse plano.</span>
                     </div>
 
-                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold">
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
                         Começar Agora
                     </a>
                     <div class="mt-6 space-y-3">
@@ -575,7 +613,7 @@
                 </div>
 
                 <!-- PLANO VITALÍCIO (Hero) -->
-                <div class="bg-gradient-to-b from-gray-900 to-black rounded-[2rem] p-8 border-2 border-brand-gold shadow-[0_0_50px_rgba(217,119,6,0.3)] relative transform md:scale-110 z-20">
+                <div class="bg-gradient-to-b from-gray-900 to-black rounded-[2rem] p-8 border-2 border-brand-gold shadow-[0_0_50px_rgba(217,119,6,0.3)] relative transform md:scale-110 z-20 flex flex-col h-full">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-dark px-6 py-2 rounded-full font-bold text-sm shadow-lg tracking-wider uppercase flex items-center gap-2 whitespace-nowrap">
                         <i data-lucide="crown" class="w-4 h-4 fill-brand-dark"></i> Oferta Limitada
                     </div>
@@ -614,7 +652,7 @@
                         </div>
                     </div>
 
-                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=vitalicio" class="btn-primary w-full py-5 rounded-xl text-lg shadow-xl mb-4 flex items-center justify-center gap-2 animate-pulse-slow">
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=vitalicio" class="btn-primary w-full py-5 rounded-xl text-lg shadow-xl mb-4 flex items-center justify-center gap-2 animate-pulse-slow mt-auto">
                         Quero destravar o controle
                         <i data-lucide="lock" class="w-5 h-5"></i>
                     </a>
@@ -640,7 +678,7 @@
         </div>
     </section>
 
-    <!-- 9) DEPOIMENTOS (ANTES E DEPOIS) -->
+    <!-- 9) DEPOIMENTOS (ANTES E DEPOIS - PROVA REAL) -->
     <section id="depoimentos" class="py-24 bg-brand-darkCard border-y border-white/5">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl md:text-4xl font-display font-bold text-center mb-16 text-white">
@@ -654,7 +692,7 @@
                     <p class="text-gray-500 text-sm italic mb-4">"Eu tava perdida, comprava coisa errada e o pedreiro ficava parado..."</p>
                     <div class="h-px bg-white/10 w-full mb-4"></div>
                     <p class="text-green-400 text-xs font-bold uppercase mb-2">AGORA:</p>
-                    <p class="text-gray-300 italic mb-6">"O app me disse exatamente quanto piso comprar. Sobrou dinheiro pra pintar a sala!"</p>
+                    <p class="text-gray-300 italic mb-6">"O app me disse exatamente quanto piso comprar. Sobrou dinheiro pra pintar a sala e o corredor."</p>
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white text-xs">RM</div>
                         <p class="text-white font-bold text-sm">Ricardo M.</p>
@@ -667,7 +705,7 @@
                     <p class="text-gray-500 text-sm italic mb-4">"Achava que ia gastar X, gastei 2X. Fui enganada nos preços..."</p>
                     <div class="h-px bg-white/10 w-full mb-4"></div>
                     <p class="text-green-400 text-xs font-bold uppercase mb-2">AGORA:</p>
-                    <p class="text-gray-300 italic mb-6">"O Zé achou preços 30% menores na minha região. Pagou a assinatura no primeiro dia."</p>
+                    <p class="text-gray-300 italic mb-6">"O Zé achou tijolo por R$ 0,85 quando eu ia pagar R$ 1,20. Pagou a assinatura no primeiro dia."</p>
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white text-xs">AL</div>
                         <p class="text-white font-bold text-sm">Ana Luiza</p>
@@ -677,10 +715,10 @@
                 <!-- Testimonial 3 -->
                 <div class="bg-brand-dark p-8 rounded-3xl border border-white/10 relative">
                     <p class="text-brand-error text-xs font-bold uppercase mb-2">ANTES:</p>
-                    <p class="text-gray-500 text-sm italic mb-4">"Papelada sumia, eu não sabia o que tinha pago..."</p>
+                    <p class="text-gray-500 text-sm italic mb-4">"Papelada sumia, eu não sabia o que tinha pago pro eletricista..."</p>
                     <div class="h-px bg-white/10 w-full mb-4"></div>
                     <p class="text-green-400 text-xs font-bold uppercase mb-2">AGORA:</p>
-                    <p class="text-gray-300 italic mb-6">"Tenho o controle total financeiro. Obra sem atraso existe!"</p>
+                    <p class="text-gray-300 italic mb-6">"Tenho o controle total financeiro. Não pago nada em duplicidade. Obra sem atraso existe!"</p>
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center font-bold text-white text-xs">CJ</div>
                         <p class="text-white font-bold text-sm">Carlos Jr.</p>
@@ -706,7 +744,6 @@
                     </div>
                 </details>
 
-                <!-- Nova Pergunta -->
                 <details class="group bg-white/5 rounded-xl border border-white/10 open:bg-white/10 transition-colors">
                     <summary class="flex cursor-pointer items-center justify-between p-4 text-white font-medium">
                         Isso é pra quem nunca construiu?
