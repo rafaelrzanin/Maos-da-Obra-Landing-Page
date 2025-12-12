@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MÃOS DA OBRA - Gestão Descomplicada</title>
-    <meta name="description" content="Controle de obra para quem não entende de obra. Simples, passo a passo e com ajuda 24h.">
+    <meta name="description" content="Controle de obra para quem não entende de obra. Pare de perder dinheiro com erro e atraso.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -202,7 +202,7 @@
     </header>
 
     <!-- 1) HERO SECTION - Otimizado e Equilibrado -->
-    <section class="relative pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden flex items-center">
+    <section class="relative pt-20 pb-12 md:pt-28 md:pb-16 overflow-hidden flex items-center">
         <div class="absolute inset-0 bg-hero-glow pointer-events-none"></div>
         <div class="container mx-auto px-4 relative z-10">
             
@@ -211,7 +211,7 @@
                 <div class="text-center md:text-left z-20">
                     
                     <!-- Carimbo Realista com Animação Lenta -->
-                    <div class="mb-8 h-16 flex items-center justify-center md:justify-start">
+                    <div class="mb-6 h-16 flex items-center justify-center md:justify-start">
                         <div class="stamp-real-wrapper">
                             <div class="stamp-real animate-stamp-slow">
                                 Xii… aí deu ruim.
@@ -219,18 +219,23 @@
                         </div>
                     </div>
 
-                    <h1 class="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.0] mb-6 tracking-tight animate-fade-in-up text-white" style="animation-delay: 0.1s">
+                    <h1 class="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.0] mb-4 tracking-tight animate-fade-in-up text-white" style="animation-delay: 0.1s">
                         Calma. <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-goldLight to-brand-gold">Não precisa ser assim.</span>
                     </h1>
 
-                    <p class="text-lg md:text-xl text-gray-400 mb-6 font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                    <p class="text-lg md:text-xl text-gray-400 mb-2 font-light leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
                         Tem solução pros problemas da sua obra. <br>
                         <span class="text-white font-medium">Simples. Sem termo difícil. Sem enrolação.</span>
                     </p>
+                    
+                    <!-- Reforço "Qualquer Fase" -->
+                    <p class="text-sm md:text-base text-brand-gold font-bold mb-8 animate-fade-in-up uppercase tracking-wide" style="animation-delay: 0.25s">
+                        Mesmo que sua obra já esteja atrasada ou no acabamento.
+                    </p>
 
                     <!-- Micro-benefícios -->
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8 animate-fade-in-up" style="animation-delay: 0.25s">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8 animate-fade-in-up" style="animation-delay: 0.3s">
                         <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
                             <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-gold"></i>
                             <span class="text-sm text-gray-300">Etapas Claras</span>
@@ -245,9 +250,9 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-up" style="animation-delay: 0.3s">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-fade-in-up" style="animation-delay: 0.35s">
                         <a href="#como-funciona" class="btn-primary px-8 py-4 rounded-xl text-lg font-bold shadow-2xl flex items-center justify-center gap-2 group w-full md:w-auto">
-                            Quero ver como funciona
+                            Quero parar de perder dinheiro
                             <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
                         </a>
                         <a href="#ze-da-obra" class="btn-secondary px-8 py-4 rounded-xl text-lg font-bold flex items-center justify-center gap-2 w-full md:w-auto">
@@ -327,7 +332,7 @@
                 Se sua obra tá assim… <span class="text-brand-error">você não tá sozinho.</span>
             </h2>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto mb-12">
                 <!-- Pain 1 -->
                 <div class="bg-white/5 p-6 rounded-2xl text-center hover:bg-white/10 transition-colors">
                     <div class="w-12 h-12 bg-brand-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -360,11 +365,62 @@
                     <p class="text-gray-300 font-medium text-sm md:text-base">Gasto que ninguém explica</p>
                 </div>
             </div>
+            
+            <div class="text-center max-w-3xl mx-auto">
+                <p class="text-xl md:text-2xl text-white font-bold leading-relaxed">
+                    "O pedreiro vai embora. <span class="text-brand-error">A conta fica com você.</span>"
+                </p>
+                <p class="text-gray-400 mt-2">Pare de pagar caro por erros que poderiam ser evitados.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NOVA SEÇÃO: FASES DA OBRA (VERSATILIDADE) -->
+    <section class="py-20 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+        <div class="container mx-auto px-4 relative z-10">
+             <div class="text-center mb-12">
+                 <h2 class="text-2xl md:text-4xl font-display font-bold text-white mb-4">
+                     Não importa a fase da sua obra.
+                 </h2>
+                 <p class="text-gray-400 max-w-2xl mx-auto">
+                     Mesmo no acabamento, uma decisão certa pode economizar 10 a 20 vezes mais do que o valor do aplicativo.
+                 </p>
+             </div>
+             
+             <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                 <!-- Card Começo -->
+                 <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors group">
+                     <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                         <i data-lucide="map" class="w-6 h-6 text-blue-400"></i>
+                     </div>
+                     <h3 class="text-white font-bold text-lg mb-2">Vai Começar?</h3>
+                     <p class="text-gray-400 text-sm">Evite o erro desde o dia 1. Comece com o cronograma certo e a lista exata do que comprar.</p>
+                 </div>
+                 
+                 <!-- Card Meio -->
+                 <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors group">
+                     <div class="w-10 h-10 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                         <i data-lucide="alert-triangle" class="w-6 h-6 text-brand-gold"></i>
+                     </div>
+                     <h3 class="text-white font-bold text-lg mb-2">Tá no meio ou atrasado?</h3>
+                     <p class="text-gray-400 text-sm">Organize o caos. Descubra onde o dinheiro está vazando e coloque a obra de volta nos trilhos.</p>
+                 </div>
+                 
+                 <!-- Card Fim -->
+                 <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:border-brand-gold/50 transition-colors group">
+                     <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                         <i data-lucide="paint-bucket" class="w-6 h-6 text-green-400"></i>
+                     </div>
+                     <h3 class="text-white font-bold text-lg mb-2">Acabamento ou Reforma?</h3>
+                     <p class="text-gray-400 text-sm">A fase mais cara. Um piso ou tinta comprado errado aqui custa 10x mais que o app.</p>
+                 </div>
+             </div>
         </div>
     </section>
 
     <!-- 3) SOLUÇÃO PARA LEIGO -->
-    <section id="como-funciona" class="py-20 md:py-24 bg-brand-dark">
+    <section id="como-funciona" class="py-20 md:py-24 bg-brand-darkCard">
         <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-display font-bold text-white mb-6">
@@ -396,9 +452,9 @@
     <!-- 4) PROVA REAL (TELAS DO APP - REALISTAS) -->
     <section class="py-20 bg-gray-900 border-y border-white/5 overflow-hidden">
         <div class="container mx-auto px-4 text-center">
-            <span class="text-brand-gold font-bold text-sm tracking-widest uppercase mb-2 block">Por dentro do app</span>
-            <h2 class="text-3xl font-bold text-white mb-2">Veja como é simples</h2>
-            <p class="text-sm text-gray-500 mb-12">Essas telas existem de verdade no app.</p>
+            <span class="text-brand-gold font-bold text-sm tracking-widest uppercase mb-2 block">Transparência Total</span>
+            <h2 class="text-3xl font-bold text-white mb-2">Por dentro do aplicativo</h2>
+            <p class="text-sm text-gray-500 mb-12">Essas telas são reais. É exatamente assim que o app funciona.</p>
 
             <!-- Grid de Mockups -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -454,11 +510,11 @@
 
                 <!-- Copy -->
                 <div class="flex-1 text-center md:text-left">
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 text-white">Bateu dúvida? <br><span class="text-brand-gold">Pergunta pro Zé.</span></h2>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 text-white">Antes de gastar, <br><span class="text-brand-gold">pergunta pro Zé.</span></h2>
                     <p class="text-gray-400 text-lg mb-8">
-                        É como ter alguém experiente do seu lado na obra. 
+                        Nunca mais tome uma decisão sozinho. O Zé é seu consultor 24h.
                         <br><strong>Fala simples. Responde na hora.</strong>
-                        <br>Te ajuda a evitar erro bobo e gasto desnecessário.
+                        <br>Te ajuda a evitar erro bobo que custa caro.
                     </p>
                     
                     <div class="space-y-4 mb-8">
@@ -474,36 +530,36 @@
                     </div>
 
                     <a href="#precos" class="text-brand-gold font-bold hover:underline flex items-center justify-center md:justify-start gap-2">
-                        Ver planos com o Zé incluído <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        Quero essa segurança na minha obra <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 6) RESULTADOS LÓGICOS -->
+    <!-- 6) RESULTADOS LÓGICOS (MATEMÁTICA DE VALOR) -->
     <section class="py-20 bg-brand-dark">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-white mb-12">O que muda quando você controla a obra</h2>
+            <h2 class="text-2xl font-bold text-white mb-12">Matemática simples: o app se paga rápido.</h2>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 <div class="p-6">
-                    <h3 class="text-4xl font-bold text-white mb-2">Menos</h3>
-                    <p class="text-xl text-brand-error font-medium">Atraso e Dor de Cabeça</p>
+                    <h3 class="text-4xl font-bold text-white mb-2">1 Erro</h3>
+                    <p class="text-xl text-brand-error font-medium">De piso ou revestimento custa R$ 500+</p>
                 </div>
                 <div class="p-6 border-y md:border-y-0 md:border-x border-white/10">
-                    <h3 class="text-4xl font-bold text-white mb-2">Menos</h3>
-                    <p class="text-xl text-brand-error font-medium">Desperdício de Material</p>
+                    <h3 class="text-4xl font-bold text-white mb-2">1 Semana</h3>
+                    <p class="text-xl text-brand-error font-medium">De atraso custa R$ 1.000+</p>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-4xl font-bold text-white mb-2">Mais</h3>
-                    <p class="text-xl text-green-400 font-medium">Dinheiro no seu Bolso</p>
+                    <h3 class="text-4xl font-bold text-white mb-2">O App</h3>
+                    <p class="text-xl text-green-400 font-medium">Custa menos que uma lata de tinta.</p>
                 </div>
             </div>
 
             <div class="mt-12">
                 <p class="text-gray-500 font-display font-bold text-lg uppercase tracking-widest">ERRAR NA OBRA CUSTA CARO.</p>
-                <p class="text-gray-400 text-sm mt-1">E normalmente quem paga é você.</p>
+                <p class="text-gray-400 text-sm mt-1">Normalmente quem paga a conta é você.</p>
             </div>
         </div>
     </section>
@@ -512,11 +568,11 @@
     <section class="py-24 bg-brand-gold text-brand-dark overflow-hidden relative">
         <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/concrete-wall.png')] opacity-10"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-xl font-bold uppercase tracking-widest mb-4 opacity-80">E o custo?</h2>
+            <h2 class="text-xl font-bold uppercase tracking-widest mb-4 opacity-80">Pense bem...</h2>
             <p class="text-3xl md:text-5xl font-display font-bold max-w-4xl mx-auto leading-tight">
                 Resolver tudo isso custa menos do que <span class="bg-brand-dark text-brand-gold px-2">um saco de cimento.</span>
             </p>
-            <p class="mt-6 text-lg font-medium opacity-80">Um erro na obra custa muito mais do que isso.</p>
+            <p class="mt-6 text-lg font-medium opacity-80">Um erro bobo na obra custa muito mais do que isso.</p>
         </div>
     </section>
 
@@ -561,7 +617,7 @@
                     </div>
 
                     <a href="https://maos-da-obra-2-0.vercel.app/login?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
-                        Começar Agora
+                        Quero parar de perder dinheiro
                     </a>
                 </div>
 
@@ -587,7 +643,7 @@
                     </div>
 
                     <a href="https://maos-da-obra-2-0.vercel.app/login?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
-                        Começar Agora
+                        Estancar prejuízo agora
                     </a>
                 </div>
 
