@@ -43,7 +43,7 @@
               'float': 'float 6s ease-in-out infinite',
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'shine': 'shine 2s linear infinite',
-              'stamp-impact': 'stampImpact 0.4s cubic-bezier(0.5, 0, 0.75, 0) forwards',
+              'stamp-slow': 'stampSlow 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards',
             },
             keyframes: {
               fadeInUp: {
@@ -58,11 +58,9 @@
                 '0%': { backgroundPosition: '200% center' },
                 '100%': { backgroundPosition: '-200% center' },
               },
-              stampImpact: {
-                '0%': { opacity: '0', transform: 'scale(2.5) rotate(15deg)', filter: 'blur(4px)' },
-                '60%': { opacity: '1', transform: 'scale(0.9) rotate(-2deg)', filter: 'blur(0px)' },
-                '80%': { transform: 'scale(1.05) rotate(-2deg)' },
-                '100%': { transform: 'scale(1) rotate(-2deg)' },
+              stampSlow: {
+                '0%': { opacity: '0', transform: 'scale(3) rotate(10deg)' },
+                '100%': { opacity: '1', transform: 'scale(1) rotate(-2deg)' },
               }
             },
             backgroundImage: {
@@ -212,10 +210,10 @@
                 <!-- Text Content (Left) -->
                 <div class="text-center md:text-left z-20">
                     
-                    <!-- Carimbo Realista com Animação de Impacto -->
+                    <!-- Carimbo Realista com Animação Lenta -->
                     <div class="mb-8 h-16 flex items-center justify-center md:justify-start">
                         <div class="stamp-real-wrapper">
-                            <div class="stamp-real animate-stamp-impact">
+                            <div class="stamp-real animate-stamp-slow">
                                 Xii… aí deu ruim.
                             </div>
                         </div>
@@ -551,12 +549,8 @@
                         Mais barato que um saco de cimento.
                     </div>
                     
-                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
-                        Começar Agora
-                    </a>
-                    
-                    <!-- Bullets -->
-                    <div class="mt-6 space-y-3">
+                    <!-- Bullets (Movido para cima do botão) -->
+                    <div class="mt-2 space-y-3 flex-1 mb-8">
                         <p class="text-sm text-gray-300 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Saiba o que fazer agora e depois</p>
                         <p class="text-sm text-gray-300 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Lista de materiais certa</p>
                         <p class="text-sm text-gray-300 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Controle de gastos</p>
@@ -565,6 +559,10 @@
                             <p class="text-sm text-white font-bold flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> 7 dias de Zé da Obra</p>
                         </div>
                     </div>
+
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=mensal" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
+                        Começar Agora
+                    </a>
                 </div>
 
                 <!-- PLANO SEMESTRAL -->
@@ -578,12 +576,8 @@
                         Um erro que evita, já paga o plano.
                     </div>
 
-                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
-                        Começar Agora
-                    </a>
-                    
-                    <!-- Bullets -->
-                    <div class="mt-6 space-y-3">
+                    <!-- Bullets (Movido para cima do botão) -->
+                    <div class="mt-2 space-y-3 flex-1 mb-8">
                         <p class="text-sm text-gray-300 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Tudo do plano mensal</p>
                         <p class="text-sm text-gray-300 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Mais controle da obra</p>
                         <p class="text-sm text-gray-300 flex gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Relatórios organizados</p>
@@ -591,6 +585,10 @@
                             <p class="text-sm text-white font-bold flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> 7 dias de Zé da Obra</p>
                         </div>
                     </div>
+
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=semestral" class="block w-full text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors font-semibold mt-auto">
+                        Começar Agora
+                    </a>
                 </div>
 
                 <!-- PLANO VITALÍCIO (Hero) -->
@@ -607,12 +605,8 @@
                         <p class="text-sm text-brand-gold font-bold mt-2 opacity-90">ou em até 12x no cartão</p>
                     </div>
 
-                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=vitalicio" class="btn-primary w-full py-4 rounded-xl text-lg shadow-xl mb-6 flex items-center justify-center gap-2 animate-pulse-slow">
-                        Quero destravar o controle
-                        <i data-lucide="lock" class="w-5 h-5"></i>
-                    </a>
-
-                    <div class="space-y-4">
+                    <!-- Bullets & Bonus (Movido para cima do botão) -->
+                    <div class="space-y-4 flex-1 mb-6">
                         <div class="flex items-center gap-3">
                             <div class="bg-brand-gold/20 p-1.5 rounded-full"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i></div>
                             <span class="text-gray-200 font-medium">Acesso para SEMPRE</span>
@@ -649,6 +643,11 @@
                             </div>
                         </div>
                     </div>
+
+                    <a href="https://maos-da-obra-2-0.vercel.app/login?plan=vitalicio" class="btn-primary w-full py-4 rounded-xl text-lg shadow-xl flex items-center justify-center gap-2 animate-pulse-slow mt-auto">
+                        Quero destravar o controle
+                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    </a>
                 </div>
             </div>
             
